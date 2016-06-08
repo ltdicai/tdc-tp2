@@ -1,0 +1,32 @@
+\section{Desarrollo y Experimentos}
+
+\subsection{Primera consigna: Caracterizando rutas}
+
+
+\subsubsection{traceroute}
+Implemetamos la herramienta traceroute mediante sucesivos paquetes con TTLs incrementales, calculando los RTT entre cada salto para los que se reciba una respuesta de ICMP de tipo time exceeded.
+Para esto usamos el paquete scapy de python que nos permite crear y mandar paquetes IP/ICMP. Tratamos simular el comportamiento de traceroute de UNIX, enviando una rafaga de paquetes(4 paquetes) para obtener al menos una ruta en caso de que algunos paquetes se pierdan(es decir, no se obtenga ninguna respuesta). Vamos guardando las rutas obtenidas con sus respetivos RTT  y al finalizar calculamos el RRT promedio en base al TTL\_{i} de cada paso.
+
+La herramienta se ejecuta\footnote{Leer el archivo README para instalar los paquetes necesarios para el correcto funcionamiento del script}:
+%aca va la linea de comando
+
+\subsubsection{Traceroute - Enlaces intercontinentales}
+
+Para cumplir la consigna de esta sección nos basamos en paper de outlier \footnote{ \hyperref[Cimbala]{http://www.mne.psu.edu/cimbala/me345/Lectures/Outliers.pdf} } implementamos la función detect\_outlier que recibe un arreglo y calacula los posibles candidatos. Considermos como input los RTT entre hops, tomando como hipotesis que los RTTs más grande corresponde a los nodos de cada extremo en distintos continentes.
+
+\subsubsection{Traceroute - Estudiar rutas}
+
+Para esta sección, vamos a usar los siguientes links de universidades:
+
+\begin{itemize}
+\item Washington State University - EEUU wsu.edu
+\item The university of tokio - Japon www.u-tokyo.ac.jp
+\item The university of Sydney - Australia - www.sydney.edu.au
+\item University of Oxford - Reino Unido - www.ox.ac.uk
+
+\end{itemize}
+
+\subsection{Segunda consigna: gráficos y análisis}
+
+
+Realizaremos un análisis que permitará detectar los saltos correspondientes a enlaces intercontinentales. Para esto usaremos las rutas encontradas desde Buenos Aires hasta las diferentes universidades del mundo, entre ellas, las especificadas en la sección anterior. 
