@@ -2,6 +2,7 @@
 import time
 from math import *
 from scapy.all import *
+from scapy.config import conf
 from modified_thompson import thompson_tau_test
 from urllib2 import urlopen
 from collections import defaultdict
@@ -30,10 +31,10 @@ def obtener_pais(ip):
 	else:
 		for intento in xrange(3):
 			try:
-				response = urlopen(url + str(ip))
-				print ip
+				response = urlopen(url + str(ip), None, 3)
+				#print ip
 				res_json = json.load(response)
-				print res_json
+				#print res_json
 				country_name = str(res_json["country_name"])
 				if not country_name:
 					continue
@@ -42,9 +43,9 @@ def obtener_pais(ip):
 				CACHE_PAISES[str(ip)] = country_name
 				return country_name
 			except Exception, exc:
-				print exc
+				#print exc
 				continue
-		print "No obtuve respuesta"
+		#print "No obtuve respuesta"
 		return "Unknown"
 
 
@@ -64,30 +65,48 @@ def mostrar_RTTs(rtts):
 
 CANT_RUTAS = 1
 MAX_TTL = 30
-TAM_RAFAGA = 3
-TIMEOUT = 5
+TAM_RAFAGA = 40
+TIMEOUT = 2
 
 hostname = str(sys.argv[1])
 
 RTT_por_hop = defaultdict(list)
 muestras = dict()
 
+sockit = conf.L3socket()
+def enviar(pkt, sockit, *args, **kargs):
+	if not kargs.has_key("timeout"):
+		kargs["timeout"] = -1
+	a,b=sndrcv(sockit,pkt,*args,**kargs)
+	#s.close()
+	if len(a) > 0:
+		return a[0][1]
+	else:
+		return None
+
 rutas = list()
 for corrida in range(CANT_RUTAS):
-	ruta_actual = list()
-	rtts_ruta_actual = list()
+	#ruta_actual = list()
+	#rtts_ruta_actual = list()
 	for ttl in xrange(1, MAX_TTL):
+		print "TTL={}".format(ttl)
 		muestras[ttl] = defaultdict(list)
 		pkt = IP(dst=hostname, ttl=ttl) / ICMP()/"XXXXXXXdddfXXXX"
+		reply = None
 		for i in xrange(TAM_RAFAGA):
+			print "pkt numero", i
 			t_inicio = time.time()
 			reply = sr1(pkt, verbose=0, timeout=TIMEOUT)
+			#reply = enviar(pkt, sockit, verbose=0, timeout=TIMEOUT)
 			t_final = time.time() - t_inicio
 			if reply:
 				muestras[ttl][str(reply.src)].append(t_final)
 			else:
 				continue
-
+		if reply and reply.type == 0:
+			break
+	sockit.close()
+	print muestras
 	camino = list()
 	for ttl, d in muestras.items():
 		if muestras[ttl]:
@@ -101,6 +120,25 @@ for corrida in range(CANT_RUTAS):
 			camino.append({'ip': ip, 'rtt': rtt})
 		else:
 			camino.append({'ip': "unknown", 'rtt': 'unknown' })
+	for item in camino:
+		print "[{0}] {1}".format(item["ip"], type(item["rtt"]) is not str and rtt_a_str(item["rtt"]) or "Unknown")
+
+
+
+	rtt_relativos = list()
+	rtt_aux = [(item["ip"], item["rtt"]) for item in camino if item["ip"] != "unknown"]
+	ip_relativos = list()
+	for i in xrange(1, len(rtt_aux)):
+		rtt_minus = rtt_aux[i-1][1]
+		rtt_i = rtt_aux[i][1]
+		rtt_relativos.append(abs(rtt_i - rtt_minus)*1000)
+		ip_relativos.append((rtt_aux[i-1][0], rtt_aux[i][0]))
+	for x in xrange(len(ip_relativos)):
+		print "{0}->{1}\t\t{2}".format(obtener_pais(ip_relativos[x][0]), obtener_pais(ip_relativos[x][1]), rtt_relativos[x])
+	print "RTT relativos: ", rtt_relativos
+	outliers = thompson_tau_test(rtt_relativos)
+	print outliers
+
 """
 		print "{ttl} {rtts}\t(avg={rtt_prom})".format(
 				ttl=ttl,
