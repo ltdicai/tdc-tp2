@@ -13,18 +13,18 @@ import csv
 ######## Ejemplo:  sudo python traceroute_estimatedRtt_n_zrtt.py 23.12.153.99   ########
 hostname = str(sys.argv[1])
 
+#Constantes
 URL = "http://freegeoip.net/json/"
 CANT_RUTAS = 1
 MAX_TTL = 30
-TAM_RAFAGA = 1
-TIMEOUT = 2
+TAM_RAFAGA = 100
+TIMEOUT = 3
 ECHO_REPLY = 0
+
 
 rtt_por_hop = defaultdict(list)
 cache_paises = dict()
 muestras = dict()
-
-
 
 def obtener_pais(ip):
     if ip is None:
@@ -94,7 +94,8 @@ for ttl in xrange(1, MAX_TTL):
         else:
             muestras[ttl][None].append(t_final)
 t_t_final = time.time() - t_t_inicio
-print t_t_final
+
+print "Se completó el rastreo en " + t_t_final + " segundos"
 
 muestreo = dict()
 for ttl, respuestas in muestras.items():
