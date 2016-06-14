@@ -18,7 +18,7 @@ URL = "http://freegeoip.net/json/"
 CANT_RUTAS = 1
 MAX_TTL = 30
 TAM_RAFAGA = 100
-TIMEOUT = 3
+TIMEOUT = 2
 ECHO_REPLY = 0
 
 
@@ -95,7 +95,7 @@ for ttl in xrange(1, MAX_TTL):
             muestras[ttl][None].append(t_final)
 t_t_final = time.time() - t_t_inicio
 
-print "Se completó el rastreo en " + t_t_final + " segundos"
+print "Se completó el rastreo en {0} segundos".format(t_t_final)
 
 muestreo = dict()
 for ttl, respuestas in muestras.items():
@@ -104,6 +104,7 @@ for ttl, respuestas in muestras.items():
         rtt_promedio = sum(rtts)/len(rtts)
         muestreo[ttl].append({'ip': ip, 'cant_respuestas': len(rtts), 'rtts':rtts, 'rtt_promedio': rtt_promedio})
 
+print muestreo
 #Generamos el camino estimado, usando para cada TTL el nodo
 #que devolvio mas respuestas
 camino = list()
