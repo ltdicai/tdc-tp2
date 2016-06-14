@@ -30,3 +30,46 @@ Para esta sección, vamos a usar los siguientes links de universidades:
 
 
 Realizaremos un análisis que permitará detectar los saltos correspondientes a enlaces intercontinentales. Para esto usaremos las rutas encontradas desde Buenos Aires hasta las diferentes universidades del mundo, entre ellas, las especificadas en la sección anterior. 
+
+Para obtener los datos de los experimentos, consideramos lo siguiente:
+Para calcular el RTT para un determinado Hop(salto) utilizamos un promedio de las muestras particulares para cada univeridad.
+Para usar el metodo de calculo de outlier, tomamos como hipotesis que los RTT relativos (entre hops) cuanto mas grande sean, mayor es la posibilidad de ser un salto intercontinental. Partiendo de esta base, llamamos al metodo de cimbala con el set de datos de RTT relativos.
+
+\subsubsection{Experimentos}
+\textbf{The university of tokio} \\
+
+\textbf{Ruta de IPs:} \{ [192.168.10.1]; [200.89.160.17]; [200.89.165.222]; 
+ [195.22.220.64]; [195.22.219.17]; [195.22.219.17]; [149.3.181.65]; [129.250.2.227] 
+ [129.250.4.13]; [129.250.2.54]; [129.250.3.86]; [129.250.6.188]; [129.250.2.255]; 
+ [61.200.80.218]; [158.205.192.173]; [158.205.192.86]; [158.205.121.250]; 
+ [154.34.240.254]; [210.152.135.178]\}
+
+En el primer gráfico mostramos como incrementa el RTT a medida que se van enviando los paquetes con un TTL determinado. Se puede ver que cuando enviamos los paquetes con TTLs 2,3, y 4 no obtenemos respuesta, suponemos que hay servidores a dicha distancia no estan configurados para responder paquetes ICMP de tipo Echo Request,o que se perdieron en la red. Tambien, como habiamos dicho antes, suponemos que los saltos de incremento del RTT se debe a una conexión intercontinetal, asi que podemos asumir que hay posible conexiones ente los Hops 1-2, 9-10, 13-14 y 15-16.
+Para comprobar esta hipotesis, tomamos el RTT relativo entre Hops y se los pasamos al metodo de cimbala y nos da como resultado que los posibles candidatos son:
+(9, 5, 7, 11)
+
+
+\begin{center}
+   \begin{tabular}{ |l | c | r | }
+     \hline
+     \textbf{Origen} & \textbf{Destino} & \textbf{RRT relativo (ms)} \\ \hline
+     Home & Argentina & 20.868 \\ \hline
+     Argentina & Argentina & 0.162 \\ \hline
+     Argentina & Italy & 3.043 \\ \hline
+     Italy & Italy & 30.260 \\ \hline
+     Italy & Italy & 8.189 \\ \hline
+     Italy & Italy & 109.476\\ \hline
+     Italy & United States & 1.993\\ \hline
+     United States & United States & 52.135 \\ \hline
+     United States & United States & 0.485\\ \hline
+     United States & United States & 111.830\\ \hline
+     United States & United States & 1.617 \\ \hline
+     United States & United States & 48.441 \\ \hline
+     United States & Japan & 32.720 \\ \hline
+     Japan & Japan & 10.492 \\ \hline
+     Japan & Japan & 4.534 \\ \hline
+     Japan & Japan & 26.721 \\ \hline
+     Japan & Japan & 7.028 \\ \hline
+     Japan & Japan & 19.043 \\ \hline
+   \end{tabular}
+ \end{center}
