@@ -90,7 +90,6 @@ for ttl in xrange(1, MAX_TTL):
             muestras[ttl][str(reply.src)].append(t_final)
             if reply.type == ECHO_REPLY:
                 destino_alcanzado = True
-                break
         else:
             muestras[ttl][None].append(t_final)
 t_t_final = time.time() - t_t_inicio
@@ -104,7 +103,6 @@ for ttl, respuestas in muestras.items():
         rtt_promedio = sum(rtts)/len(rtts)
         muestreo[ttl].append({'ip': ip, 'cant_respuestas': len(rtts), 'rtts':rtts, 'rtt_promedio': rtt_promedio})
 
-print muestreo
 #Generamos el camino estimado, usando para cada TTL el nodo
 #que devolvio mas respuestas
 camino = list()
@@ -140,6 +138,14 @@ for i in xrange(1, len(camino_aux)):
 
 #Obtenemos los outliers
 outliers = thompson_tau_test(rtt_relativos)
+
+
+#Outputs
+print muestreo
+print '\n'
+for ttl, respuestas in muestreo.items():
+    temp = { ttl: [{'ip': respuesta['ip'], 'cant_respuestas': respuesta['cant_respuestas'], 'rtt_promedio': respuesta['rtt_promedio']} for respuesta in respuestas]}
+    print temp
 
 print "\nCamino:\n---------------"
 print "{3}\t{0:^20s}\t{1:^20s}\t{2}".format('Pais', 'IP', 'RTT', 'TTL')
