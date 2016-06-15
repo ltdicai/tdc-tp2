@@ -35,10 +35,12 @@ def obtener_pais(ip):
         try:
             with open("archivo.csv", "r") as csvfile:
                 for linea in csvfile:
-                    (ip, pais) = linea.split(",")
-                    cache_paises[ip] = pais.strip()
+                    (ip0, pais) = linea.split(",")
+                    cache_paises[ip0] = pais.strip()
         except IOError:
             pass
+    if ip == "192.168.1.1":
+        return "Argentina"
     if ip in cache_paises:
         return cache_paises[ip]
     else:
@@ -150,7 +152,7 @@ for ttl, respuestas in muestreo.items():
 print "\nCamino:\n---------------"
 print "{3}\t{0:^20s}\t{1:^20s}\t{2}".format('Pais', 'IP', 'RTT', 'TTL')
 for hop in camino:
-    print "{3:>2}\t{0:>20s}\t{1:<20s}\t{2}".format(hop["ip"], hop["pais"], hop["ip"] is not None and pasar_a_ms(hop["rtt"]) or "Unknown", hop["ttl"])
+    print "{3:>2}\t{1:>20s}\t{0:<20s}\t{2}".format(hop["ip"], hop["pais"], hop["ip"] is not None and pasar_a_ms(hop["rtt"]) or "Unknown", hop["ttl"])
 
 
 print "\nSaltos:\n---------------"
