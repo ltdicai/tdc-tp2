@@ -18,7 +18,7 @@ URL = "http://freegeoip.net/json/"
 CANT_RUTAS = 1
 MAX_TTL = 30
 TAM_RAFAGA = 100
-TIMEOUT = 2
+TIMEOUT = 3
 ECHO_REPLY = 0
 
 
@@ -35,12 +35,10 @@ def obtener_pais(ip):
         try:
             with open("archivo.csv", "r") as csvfile:
                 for linea in csvfile:
-                    (ip0, pais) = linea.split(",")
-                    cache_paises[ip0] = pais.strip()
+                    (ip, pais) = linea.split(",")
+                    cache_paises[ip] = pais.strip()
         except IOError:
             pass
-    if ip == "192.168.1.1":
-        return "Argentina"
     if ip in cache_paises:
         return cache_paises[ip]
     else:
@@ -145,24 +143,40 @@ outliers = thompson_tau_test(rtt_relativos)
 #Outputs
 print muestreo
 print '\n'
-for ttl, respuestas in muestreo.items():
-    temp = { ttl: [{'ip': respuesta['ip'], 'cant_respuestas': respuesta['cant_respuestas'], 'rtt_promedio': respuesta['rtt_promedio']} for respuesta in respuestas]}
-    print temp
+with open(hostname + "_muestreo.csv", "w+") as muestreofile:
+    muestreofile.write("Muestreo\n")
+    for ttl, respuestas in muestreo.items():
+        temp = { ttl: [{'ip': respuesta['ip'], 'cant_respuestas': respuesta['cant_respuestas'], 'rtt_promedio': respuesta['rtt_promedio']} for respuesta in respuestas]}
+        print temp
+        muestreofile.write(str(temp)+"\n")
 
-print "\nCamino:\n---------------"
-print "{3}\t{0:^20s}\t{1:^20s}\t{2}".format('Pais', 'IP', 'RTT', 'TTL')
-for hop in camino:
-    print "{3:>2}\t{1:>20s}\t{0:<20s}\t{2}".format(hop["ip"], hop["pais"], hop["ip"] is not None and pasar_a_ms(hop["rtt"]) or "Unknown", hop["ttl"])
+with open(hostname + "_camino.csv", "w+") as caminofile:
+    titulo = "Camino:\n---------------"
+    header = "{3}\t{0:^20s}\t{1:^20s}\t{2}".format('Pais', 'IP', 'RTT', 'TTL')
+    caminofile.write(titulo)
+    caminofile.write(header)
+    print "\n" + titulo
+    print header
+    for hop in camino:
+        temp = "{3:>2}\t{0:>20s}\t{1:<20s}\t{2}".format(hop["ip"], hop["pais"], hop["ip"] is not None and pasar_a_ms(hop["rtt"]) or "Unknown", hop["ttl"])
+        print temp
+        caminofile.write(temp+"\n")
 
-
-print "\nSaltos:\n---------------"
-print "{0:^25s} -> {1:^25s}\t{2}".format('Origen', 'Destino', 'RTTs relativos')
-for x in xrange(len(ip_relativos)):
-    marcador = x in outliers and '[outlier]' or ''
-    print "({4:>2d}) {0:<20s} -> ({5:>2d}) {1:<20s}\t{2}\t{3}".format(obtener_pais(ip_relativos[x][0]),
-        obtener_pais(ip_relativos[x][1]),
-        pasar_a_ms(rtt_relativos[x]),
-        marcador,
-        saltos[x][0],
-        saltos[x][1]
-    )
+with open(hostname + "_saltos.csv", "w+") as saltosfile:
+    titulo = "Saltos:\n---------------"
+    header = "{0:^25s} -> {1:^25s}\t{2}".format('Origen', 'Destino', 'RTTs relativos')
+    saltosfile.write(titulo+"\n")
+    saltosfile.write(header+"\n")
+    print "\n" + titulo
+    print header
+    for x in xrange(len(ip_relativos)):
+        marcador = x in outliers and '[outlier]' or ''
+        temp = "({4:>2d}) {0:<20s} -> ({5:>2d}) {1:<20s}\t{2}\t{3}".format(obtener_pais(ip_relativos[x][0]),
+            obtener_pais(ip_relativos[x][1]),
+            pasar_a_ms(rtt_relativos[x]),
+            marcador,
+            saltos[x][0],
+            saltos[x][1]
+        )
+        print temp
+        saltosfile.write(temp+"\n")
