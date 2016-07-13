@@ -4,16 +4,26 @@
 Introduccion
 	Internet es posible gracias a un conjunto de miles de redes interconectadas entre sí.
 	La conexion entre redes de distintos contitentes se realiza por medio de cables submarinos capaces de transportar grandes volumnes de datos por segundo.
-	En este trabajo analizaremos que tan factible resulta utilizar el RTT entre hots para para descubrir saltos intercontinentales.  
+	En este trabajo analizaremos que tan factible resulta utilizar la salida provista por una herramienta de traceroute entre hots para detectar saltos intercontinentales.  
 
-Teoria
-	El Round Trip Time (RTT) es el tiempo que tarda un paquete en ir y volver desde un nodo A (el origen) a un nodo B (el destino) dentro de una red. Se define como 2 * Delay, siendo Delay = ... . Si bien el RTT de enlaces punto a punto puede calcularse a partir del ancho de banda, la velocidad de propagación del medio y otras variables, el RTT de un paquete IP queda sujeto a la ruta que toma un paquete, que puede 
+
+
+Marco teórico
+	El Round Trip Time (RTT) es el tiempo que tarda un paquete en ir y volver desde un nodo A (el origen) a un nodo B (el destino) dentro de una red. 
+	Cuando se trata de enlaces punto a punto, se define como 2 * Delay. 
+	Si bien a nivel de enlace el Delay puede calcularse a partir de variables conocidas (ancho de banda, velocidad de propagación del medio, etc), a nivel de red  de un paquete IP queda sujeto a la ruta que toma un paquete, que puede 
+		RTT entre varias redes interconectadas depende de variables desconocidadas de cada enlace intermedio
+		
+		
 	Protocolo ICMP
+		
+
 	Traceroute
 		ICMP
 		Protocolo especial
+
 	 
-Herramientas
+Herramientas desarrolladas
 	Implementacion propia de traceroute.
 		Implementamos nuestra propia herramienta de traceroute siguiendo la técnica de los paquetes ICMP "echo request/echo reply".
 		La herramiente permite definir la cantidad maxima de saltos a analizar, el tiempo considerado antes de levantar timeout para el el envío de un paquete, y un umbral según el cual se considera si es necesario continuar probando un hop. 	
@@ -71,3 +81,5 @@ Conclusión
 	Mirar tiempo + IP del hop da una mejor idea (por ejemplo, se puede desetimar asaltos dentro de una misma red)
 
 	Queda probar considerar los saltos entre subredes, en lugar de entre hops.
+
+
