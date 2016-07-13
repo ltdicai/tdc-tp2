@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import time
 import argparse
+from geoip2.database import Reader
 from math import *
 from scapy.all import *
 from scapy.config import conf
@@ -19,6 +20,11 @@ ECHO_REPLY = 0
 
 rtt_por_hop = defaultdict(list)
 cache_paises = dict()
+
+try:
+    country_database = Reader("GeoLite2-Country.mmdb")
+except:
+    country_database = None
 
 
 
@@ -83,6 +89,21 @@ def rastrear(hostname, max_ttl, tam_rafaga, timeout, ptimeout):
                     'rtt_filt_promedio': None
                 })
     return muestreo
+
+def obtener_pais(ip):
+    if ip is None or country_database is None:
+        return "Unknown"
+    if ip.startswith("10.") or ip.startswith("192.168."):
+        return "Local"
+    try:
+        response = country_database.country(ip.strip())
+        if response.country.name:
+            return response.country.name
+        else:
+            return response.continent.name
+    except Exception, exc:
+        print exc
+        return "Unknown"
 
 def cuerpo(hostname, max_ttl, tam_rafaga, timeout, ptimeout, output_file_name):
     muestreo = rastrear(hostname, max_ttl, tam_rafaga, timeout, ptimeout)
