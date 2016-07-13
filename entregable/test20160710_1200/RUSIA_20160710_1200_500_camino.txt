@@ -1,0 +1,24 @@
+Camino:
+---------------
+TTL	         IP         	        Pais        	    RTT Promedio    	 RTT Filtrado Prom  	    RTT Mediana     
+ 1	192.168.0.1         	      Unknown       	      83.168 ms     	      77.213 ms     	      79.879 ms     
+ 2	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 3	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 4	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 5	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 6	200.89.164.169      	     Argentina      	     112.215 ms     	     108.017 ms     	     107.943 ms     
+ 7	200.89.165.130      	     Argentina      	     112.421 ms     	     108.154 ms     	     111.555 ms     
+ 8	200.89.165.222      	     Argentina      	      91.126 ms     	      84.386 ms     	      87.783 ms     
+ 9	190.216.88.33       	     Argentina      	      99.588 ms     	      94.083 ms     	      95.951 ms     
+10	67.17.94.249        	     Australia      	     219.272 ms     	      217.81 ms     	      218.94 ms     
+11	4.68.72.66          	   United States    	    1242.049 ms     	    1242.049 ms     	     1215.92 ms     
+12	4.69.158.241        	      Germany       	     346.192 ms     	     345.503 ms     	     344.863 ms     
+13	4.69.158.241        	      Germany       	     324.208 ms     	     321.293 ms     	     323.704 ms     
+14	213.242.110.198     	       France       	     333.594 ms     	     325.966 ms     	     327.773 ms     
+15	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+16	194.85.40.229       	       Russia       	     347.373 ms     	     338.116 ms     	     339.832 ms     
+17	194.190.254.118     	       Russia       	     338.319 ms     	     336.433 ms     	     336.106 ms     
+18	93.180.0.174        	       Russia       	      339.49 ms     	     339.327 ms     	      339.72 ms     
+19	188.44.33.30        	       Russia       	     340.456 ms     	     338.169 ms     	     339.714 ms     
+20	188.44.33.2         	       Russia       	     339.883 ms     	     337.797 ms     	     339.557 ms     
+21	188.44.50.103       	       Russia       	      334.94 ms     	     333.798 ms     	     335.726 ms     

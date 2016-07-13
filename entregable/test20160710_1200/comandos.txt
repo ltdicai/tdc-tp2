@@ -1,0 +1,7 @@
+sudo python traceroute_4.py wsu.edu -tr 500 -o EEUU_1_20160710_1000_500
+sudo python traceroute_4.py www.cs.uoregon.edu -tr 500 -o EEUU_OREGON_20160710_1000_500
+sudo python traceroute_4.py www.ox.ac.uk -tr 500 -o ENG_20160710_1000_500
+sudo python traceroute_4.py www.u-tokyo.ac.jp -tr 500 -o JAP_20160710_1000_500
+sudo python traceroute_4.py www.sydney.edu.au -tr 500 -o AUSTRALIA_20160710_1000_500
+sudo python traceroute_4.py msu.ru -tr 500 -o RUSIA_20160710_1000_500
+sudo python traceroute_4.py www.unisa.ac.za -tr 500 -o AFR_20160710_1000_500

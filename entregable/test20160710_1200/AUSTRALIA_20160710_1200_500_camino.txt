@@ -1,0 +1,29 @@
+Camino:
+---------------
+TTL	         IP         	        Pais        	    RTT Promedio    	 RTT Filtrado Prom  	    RTT Mediana     
+ 1	192.168.0.1         	      Unknown       	      83.482 ms     	       79.41 ms     	      79.864 ms     
+ 2	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 3	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 4	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 5	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 6	200.89.165.173      	     Argentina      	     104.561 ms     	      99.641 ms     	     100.038 ms     
+ 7	200.89.165.130      	     Argentina      	     103.136 ms     	      99.826 ms     	      100.25 ms     
+ 8	200.89.165.222      	     Argentina      	      93.129 ms     	      88.338 ms     	       90.99 ms     
+ 9	190.216.88.33       	     Argentina      	      97.351 ms     	      93.599 ms     	      95.883 ms     
+10	67.17.94.249        	     Australia      	     216.111 ms     	     213.442 ms     	     215.718 ms     
+11	4.68.72.66          	   United States    	    1135.367 ms     	    1135.367 ms     	    1261.151 ms     
+12	4.69.207.33         	   United States    	     524.529 ms     	     204.472 ms     	       217.7 ms     
+13	4.68.127.54         	   United States    	     252.155 ms     	      251.38 ms     	      251.79 ms     
+14	129.250.4.250       	   United States    	     252.912 ms     	     249.844 ms     	     251.682 ms     
+15	129.250.2.219       	   United States    	     277.974 ms     	      276.24 ms     	     275.941 ms     
+16	129.250.7.69        	   United States    	     233.342 ms     	     232.314 ms     	     231.902 ms     
+17	129.250.3.123       	   United States    	     233.007 ms     	     232.249 ms     	     231.935 ms     
+18	204.1.253.166       	   United States    	     232.077 ms     	     231.615 ms     	     231.782 ms     
+19	202.158.194.172     	     Australia      	     357.271 ms     	     355.968 ms     	     355.901 ms     
+20	113.197.15.68       	     Australia      	     356.651 ms     	     356.782 ms     	     355.914 ms     
+21	113.197.15.66       	     Australia      	     386.158 ms     	     384.016 ms     	     383.947 ms     
+22	113.197.15.152      	     Australia      	     386.321 ms     	     385.812 ms     	     384.073 ms     
+23	138.44.5.47         	     Australia      	     387.216 ms     	     387.217 ms     	     387.693 ms     
+24	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+25	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+26	129.78.5.11         	     Australia      	     383.264 ms     	     383.769 ms     	     383.762 ms     

@@ -1,0 +1,25 @@
+Camino:
+---------------
+TTL	         IP         	        Pais        	    RTT Promedio    	 RTT Filtrado Prom  	    RTT Mediana     
+ 1	192.168.0.1         	      Unknown       	      79.873 ms     	       75.61 ms     	      76.537 ms     
+ 2	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 3	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 4	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 5	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 6	200.89.164.185      	     Argentina      	     100.588 ms     	      95.665 ms     	      98.118 ms     
+ 7	200.89.165.130      	     Argentina      	     106.687 ms     	     103.591 ms     	     104.278 ms     
+ 8	200.89.165.222      	     Argentina      	     101.078 ms     	      95.852 ms     	      99.772 ms     
+ 9	190.216.88.33       	     Argentina      	      96.728 ms     	      90.513 ms     	      94.141 ms     
+10	67.17.94.249        	     Australia      	     212.852 ms     	     209.896 ms     	     211.734 ms     
+11	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+12	4.69.143.190        	   United States    	     431.542 ms     	     284.112 ms     	      287.27 ms     
+13	212.187.139.166     	   United Kingdom   	     302.763 ms     	     299.916 ms     	     299.924 ms     
+14	146.97.33.2         	   United Kingdom   	     285.926 ms     	     285.207 ms     	     284.023 ms     
+15	146.97.37.194       	   United Kingdom   	     284.729 ms     	     283.931 ms     	     283.877 ms     
+16	193.63.108.94       	   United Kingdom   	     294.397 ms     	     293.438 ms     	     293.142 ms     
+17	193.63.108.98       	   United Kingdom   	     294.713 ms     	     293.784 ms     	     295.465 ms     
+18	193.63.109.90       	   United Kingdom   	     294.506 ms     	     293.514 ms     	     292.114 ms     
+19	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+20	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+21	192.76.32.62        	   United Kingdom   	     288.856 ms     	     283.675 ms     	     284.394 ms     
+22	129.67.242.154      	   United Kingdom   	     282.725 ms     	     281.523 ms     	     282.783 ms     

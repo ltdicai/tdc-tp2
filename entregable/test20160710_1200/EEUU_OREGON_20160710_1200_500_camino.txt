@@ -1,0 +1,21 @@
+Camino:
+---------------
+TTL	         IP         	        Pais        	    RTT Promedio    	 RTT Filtrado Prom  	    RTT Mediana     
+ 1	192.168.0.1         	      Unknown       	      72.776 ms     	      68.026 ms     	      69.064 ms     
+ 2	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 3	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 4	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 5	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 6	200.89.164.137      	     Argentina      	      96.104 ms     	      90.656 ms     	      93.269 ms     
+ 7	200.89.165.130      	     Argentina      	     106.086 ms     	      101.92 ms     	     103.871 ms     
+ 8	200.89.165.222      	     Argentina      	     102.085 ms     	      97.939 ms     	       99.89 ms     
+ 9	190.216.88.33       	     Argentina      	      99.542 ms     	       96.98 ms     	      96.471 ms     
+10	67.17.99.233        	      Germany       	     208.054 ms     	     205.812 ms     	     207.802 ms     
+11	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+12	4.69.132.149        	   United States    	     265.569 ms     	     246.008 ms     	      247.94 ms     
+13	4.69.132.149        	   United States    	     272.244 ms     	     246.126 ms     	     251.596 ms     
+14	4.53.200.2          	   United States    	     263.988 ms     	     262.026 ms     	     263.768 ms     
+15	207.98.64.165       	   United States    	     263.473 ms     	     261.177 ms     	      263.57 ms     
+16	207.98.68.178       	   United States    	     266.135 ms     	     265.289 ms     	     263.946 ms     
+17	128.223.2.1         	   United States    	     267.277 ms     	      263.31 ms     	     263.851 ms     
+18	128.223.4.25        	   United States    	     263.252 ms     	     261.236 ms     	      263.65 ms     

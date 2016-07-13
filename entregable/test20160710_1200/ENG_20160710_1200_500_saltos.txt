@@ -1,0 +1,17 @@
+Saltos:
+---------------
+         Origen           ->       Destino       	      Promedio      	 Promedio Filtrado  	      Mediana       
+( 1) Unknown              -> ( 6) Argentina           	    [ 20.715 ms]    	    [ 20.055 ms]    	    [ 21.581 ms]    
+( 6) Argentina            -> ( 7) Argentina           	       6.099 ms     	       7.927 ms     	        6.16 ms     
+( 7) Argentina            -> ( 8) Argentina           	       5.609 ms     	       7.739 ms     	       4.506 ms     
+( 8) Argentina            -> ( 9) Argentina           	        4.35 ms     	       5.339 ms     	       5.631 ms     
+( 9) Argentina            -> (10) Australia           	    [116.124 ms]    	    [119.383 ms]    	    [117.593 ms]    
+(10) Australia            -> (12) United States       	    [ 218.69 ms]    	    [ 74.217 ms]    	    [ 75.536 ms]    
+(12) United States        -> (13) United Kingdom      	    [128.779 ms]    	      15.803 ms     	    [ 12.655 ms]    
+(13) United Kingdom       -> (14) United Kingdom      	    [ 16.838 ms]    	      14.708 ms     	    [ 15.901 ms]    
+(14) United Kingdom       -> (15) United Kingdom      	       1.197 ms     	       1.276 ms     	       0.147 ms     
+(15) United Kingdom       -> (16) United Kingdom      	       9.669 ms     	       9.507 ms     	       9.266 ms     
+(16) United Kingdom       -> (17) United Kingdom      	       0.315 ms     	       0.346 ms     	       2.322 ms     
+(17) United Kingdom       -> (18) United Kingdom      	       0.207 ms     	        0.27 ms     	        3.35 ms     
+(18) United Kingdom       -> (21) United Kingdom      	        5.65 ms     	       9.839 ms     	        7.72 ms     
+(21) United Kingdom       -> (22) United Kingdom      	       6.131 ms     	       2.153 ms     	       1.611 ms     

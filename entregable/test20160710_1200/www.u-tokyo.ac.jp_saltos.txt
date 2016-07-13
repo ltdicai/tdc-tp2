@@ -1,0 +1,22 @@
+Saltos:
+---------------
+         Origen           ->       Destino       	      Promedio      	 Promedio Filtrado  	      Mediana       
+( 1) Unknown              -> ( 6) Argentina           	       9.574 ms     	       8.178 ms     	       8.055 ms     
+( 6) Argentina            -> ( 7) Argentina           	       0.023 ms     	         1.0 ms     	       0.005 ms     
+( 7) Argentina            -> ( 8) Argentina           	       0.153 ms     	       0.667 ms     	        0.06 ms     
+( 8) Argentina            -> ( 9) Italy               	       2.519 ms     	        2.47 ms     	       3.852 ms     
+( 9) Italy                -> (10) Brazil              	    [ 34.117 ms]    	    [ 34.222 ms]    	    [   35.8 ms]    
+(10) Brazil               -> (11) Brazil              	       0.965 ms     	       0.734 ms     	       0.054 ms     
+(11) Brazil               -> (12) Italy               	    [129.775 ms]    	    [ 130.11 ms]    	    [128.101 ms]    
+(12) Italy                -> (13) United States       	       7.011 ms     	       6.913 ms     	       7.972 ms     
+(13) United States        -> (14) United States       	    [ 49.493 ms]    	    [ 47.657 ms]    	    [ 48.067 ms]    
+(14) United States        -> (15) United States       	       0.323 ms     	       0.028 ms     	       0.025 ms     
+(15) United States        -> (16) United States       	    [134.583 ms]    	    [135.099 ms]    	    [135.889 ms]    
+(16) United States        -> (17) United States       	       6.148 ms     	       8.363 ms     	       7.969 ms     
+(17) United States        -> (18) United States       	      13.466 ms     	        9.69 ms     	      11.965 ms     
+(18) United States        -> (19) Japan               	         9.0 ms     	       7.982 ms     	       7.977 ms     
+(19) Japan                -> (20) Japan               	       8.734 ms     	       8.636 ms     	       7.999 ms     
+(20) Japan                -> (21) Japan               	    [ 30.469 ms]    	    [ 30.235 ms]    	    [ 31.951 ms]    
+(21) Japan                -> (22) Japan               	    [ 44.739 ms]    	    [ 17.188 ms]    	    [ 19.946 ms]    
+(22) Japan                -> (23) Japan               	    [ 33.409 ms]    	       7.657 ms     	       7.979 ms     
+(23) Japan                -> (24) Japan               	        6.44 ms     	       7.347 ms     	       7.928 ms     

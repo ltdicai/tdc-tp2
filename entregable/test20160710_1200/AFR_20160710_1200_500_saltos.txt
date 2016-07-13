@@ -1,0 +1,24 @@
+Saltos:
+---------------
+         Origen           ->       Destino       	      Promedio      	 Promedio Filtrado  	      Mediana       
+( 1) Unknown              -> ( 6) Argentina           	      33.683 ms     	    [ 38.449 ms]    	    [ 36.849 ms]    
+( 6) Argentina            -> ( 7) Argentina           	       2.388 ms     	       4.472 ms     	       4.634 ms     
+( 7) Argentina            -> ( 8) Argentina           	      21.765 ms     	      24.824 ms     	      23.465 ms     
+( 8) Argentina            -> ( 9) Italy               	      13.036 ms     	       8.842 ms     	      11.887 ms     
+( 9) Italy                -> (10) United States       	    [123.232 ms]    	    [124.923 ms]    	    [124.122 ms]    
+(10) United States        -> (11) United States       	       0.299 ms     	       0.203 ms     	       0.114 ms     
+(11) United States        -> (12) United States       	      21.281 ms     	       21.14 ms     	      23.272 ms     
+(12) United States        -> (13) United States       	      13.961 ms     	      12.607 ms     	      15.319 ms     
+(13) United States        -> (14) United States       	    [  47.27 ms]    	    [ 47.267 ms]    	    [ 48.025 ms]    
+(14) United States        -> (15) United States       	      26.269 ms     	      25.973 ms     	      24.159 ms     
+(15) United States        -> (16) United States       	       0.475 ms     	        1.46 ms     	       3.756 ms     
+(16) United States        -> (17) United States       	    [ 66.328 ms]    	    [ 65.634 ms]    	    [ 67.757 ms]    
+(17) United States        -> (18) United States       	       0.814 ms     	       1.781 ms     	       0.175 ms     
+(18) United States        -> (19) United States       	      21.143 ms     	      20.741 ms     	       20.29 ms     
+(19) United States        -> (20) United States       	        14.8 ms     	      14.622 ms     	      12.512 ms     
+(20) United States        -> (21) South Africa        	    [175.836 ms]    	    [176.309 ms]    	    [176.079 ms]    
+(21) South Africa         -> (22) South Africa        	       3.867 ms     	       3.591 ms     	       4.031 ms     
+(22) South Africa         -> (23) South Africa        	       7.238 ms     	       5.665 ms     	       4.271 ms     
+(23) South Africa         -> (24) South Africa        	       4.374 ms     	       3.308 ms     	       4.004 ms     
+(24) South Africa         -> (25) South Africa        	      23.477 ms     	      21.644 ms     	       23.85 ms     
+(25) South Africa         -> (26) South Africa        	       26.85 ms     	      24.387 ms     	      24.182 ms     
