@@ -1,6 +1,6 @@
 \section{Introducción}
 
-En el presente trabajo experimentaremos con herramientas y técnicas frecuentes a nivel de red. Más particularmente nos concentraremos en traceroute. La cual es una herramienta de diagnóstico para averiguar las rutas que atraviesan los paquetes en Internet.
+En el presente trabajo experimentaremos con herramientas y técnicas frecuentemente utilizadas para el análisis de redes. En particular, nos concentraremos en el uso de traceroute, una herramienta de diagnóstico para averiguar las rutas que atraviesan los paquetes en Internet.
 Se busca entender los protocolos involucrados, para luego realizar un análisis que nos permita razonar sobre lo hecho y comprender mejor lo que pasa en dichas rutas. Los conceptos teóricos sobre los que basaremos el analisis se presentan a continuación.
 
 \subsection{Protocolo de Mensajes de Control de Internet- ICMP}
@@ -9,4 +9,4 @@ Es parte de los conjunto de protocolos IP (RFC 792). Los mensajes ICMP son comú
 \subsection{Traceroute}
 
 Es una herramienta de diagnóstico que permite seguir la pista de los paquetes que vienen de un host(punto de red). Se obtiene además una estadistica del RTT o latencia de red de eso paquetes.
-Exiten varias maneras de implementar esta herramienta, usualmente se envian paquetes IP donde se incrementa progresivamente el campo Time To Live (TTL), este campo sirve para que un paquete no permanezca en la red de forma indefinida. Cuando un nodo de la red elimina un paquete, envía al emisor un mensaje ICMP indicando una incidencia. Traceroute usa esta respuesta para averiguar la direccion IP del nodo que desechó el paquete, y asi sucesivamente hasta que el paquete llegue a su destino.
+Exiten varias maneras de implementar esta herramienta, usualmente se envian paquetes IP donde se incrementa progresivamente el campo Time To Live (TTL), este campo sirve para que un paquete no permanezca en la red de forma indefinida. Cuando un nodo de la red elimina un paquete, envía al emisor un mensaje ICMP indicando una incidencia. Traceroute usa esta respuesta para averiguar la dirección IP del nodo que desechó el paquete, y asi sucesivamente hasta que el paquete llegue a su destino.

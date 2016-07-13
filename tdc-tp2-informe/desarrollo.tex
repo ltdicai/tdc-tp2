@@ -1,18 +1,36 @@
 \section{Desarrollo y Experimentos}
 
-\subsection{Primera consigna: Caracterizando rutas}
+\subsection{Caracterización de rutas: traceroute}
+La caracterizacion de una ruta dentro de una red consiste en definir una lista ordenada de host (identificados por su IP) por los que un paquete debe pasar antes de alcanzar su destino final.
+
+Con el fin de lograr Realizamos una implementación de traceroute basada en los paquete  "echo request/reply" definidos en el protocolo ICMP.
+
+El algoritmo consiste en enviar múltiples paquetes "echo request" dirigidos al host destino, incrementando sucesivamente el valor del TTL.
+
+Cuando un host intermedio recibe uno de los paquetes, se decrementa el TTL en uno y realiza una de siguientes dos acciones posibles:
+\begin{itemize}
+\item{si el TTL resultante es mayor a cero, se continua con el envío del paquete hacia el host destino;}
+\item{si el TTL resultante es igual a cero, se cancela el envío al host destino y se responde un paquete de tipo "time excedeed" al host inicial}
+ \end{itemize}
+
+Cuando se alcanza al host destino, este responde con un paquete de tipo "echo reply".
+
+Utilizando esta técnica ase logra crear un posible camino desde un host inicial a un host destino
 
 
-\subsubsection{traceroute}
-Implemetamos la herramienta traceroute mediante sucesivos paquetes con TTLs incrementales, calculando los RTT entre cada salto para los que se reciba una respuesta de ICMP de tipo time exceeded.
-Para esto usamos el paquete scapy de python que nos permite crear y mandar paquetes IP/ICMP. Tratamos simular el comportamiento de traceroute de UNIX, enviando una rafaga de paquetes(4 paquetes) para obtener al menos una ruta en caso de que algunos paquetes se pierdan(es decir, no se obtenga ninguna respuesta). Vamos guardando las rutas obtenidas con sus respetivos RTT  y al finalizar calculamos el RRT promedio en base al TTL\_{i} de cada paso.
+
+
+calculando los RTT entre cada salto para los que se reciba una respuesta de ICMP de tipo time exceeded.
+
+Para esto usamos el paquete scapy de python que nos permite crear y mandar paquetes IP/ICMP. Tratamos de simular el comportamiento de traceroute de UNIX, enviando una rafaga de paquetes(100 paquetes) para obtener una ruta y tomamos como nodo a las IP con más frecuencia entre todas las que respondieran.
+Guardamos la ruta obtenida con sus respectivo RTT  y al finalizar calculamos el RRT promedio en base al TTL\_{i} de cada paso.
 
 La herramienta se ejecuta\footnote{Leer el archivo README para instalar los paquetes necesarios para el correcto funcionamiento del script}:
 %aca va la linea de comando
 
 \subsubsection{Traceroute - Enlaces intercontinentales}
 
-Para cumplir la consigna de esta sección nos basamos en paper de outlier \footnote{ \hyperref[Cimbala]{http://www.mne.psu.edu/cimbala/me345/Lectures/Outliers.pdf} } implementamos la función detect\_outlier que recibe un arreglo y calacula los posibles candidatos. Considermos como input los RTT entre hops, tomando como hipotesis que los RTTs más grande corresponde a los nodos de cada extremo en distintos continentes.
+Para cumplir la consigna de esta sección nos basamos en el paper de outlier \footnote{ \hyperref[Cimbala]{http://www.mne.psu.edu/cimbala/me345/Lectures/Outliers.pdf} } implementamos la función detect\_outlier que recibe un arreglo y calcula los posibles candidatos. Considermos como input los RTT entre hops, tomando como hipotesis que los RTTs Relativos\footnote{RTT Relativo: es el RTT entre dos nodos de la red.} más grande corresponde a los nodos de cada extremo en distintos continentes.
 
 \subsubsection{Traceroute - Estudiar rutas}
 
@@ -24,24 +42,27 @@ Para esta sección, vamos a usar los siguientes links de universidades:
 \item The university of Sydney - Australia - www.sydney.edu.au
 \item University of Oxford - Reino Unido - www.ox.ac.uk
 
+sudafrica http://www.ebe.uct.ac.za/
+eeuu www.cs.uoregon.edu/
+
 \end{itemize}
 
 \subsection{Segunda consigna: gráficos y análisis}
 
 
-Realizaremos un análisis que permitará detectar los saltos correspondientes a enlaces intercontinentales. Para esto usaremos las rutas encontradas desde Buenos Aires hasta las diferentes universidades del mundo, entre ellas, las especificadas en la sección anterior. 
+Realizaremos un análisis que permitará detectar los saltos correspondientes a enlaces intercontinentales. Para esto usaremos las rutas encontradas desde Buenos Aires hasta las diferentes universidades del mundo, entre ellas, las especificadas en la sección anterior.
 
 Para obtener los datos de los experimentos, consideramos lo siguiente:
-Para calcular el RTT para un determinado Hop(salto) utilizamos un promedio de las muestras particulares para cada univeridad.
+Para calcular el RTT para un determinado Hop(salto) utilizamos un promedio de las muestras particulares para cada universidad.
 Para usar el metodo de calculo de outlier, tomamos como hipotesis que los RTT relativos (entre hops) cuanto mas grande sean, mayor es la posibilidad de ser un salto intercontinental. Partiendo de esta base, llamamos al metodo de cimbala con el set de datos de RTT relativos.
 
 \subsubsection{Experimentos}
 \textbf{The university of tokio} \\
 
-\textbf{Ruta de IPs:} \{ [192.168.10.1]; [200.89.160.17]; [200.89.165.222]; 
- [195.22.220.64]; [195.22.219.17]; [195.22.219.17]; [149.3.181.65]; [129.250.2.227] 
- [129.250.4.13]; [129.250.2.54]; [129.250.3.86]; [129.250.6.188]; [129.250.2.255]; 
- [61.200.80.218]; [158.205.192.173]; [158.205.192.86]; [158.205.121.250]; 
+\textbf{Ruta de IPs:} \{ [192.168.10.1]; [200.89.160.17]; [200.89.165.222];
+ [195.22.220.64]; [195.22.219.17]; [195.22.219.17]; [149.3.181.65]; [129.250.2.227]
+ [129.250.4.13]; [129.250.2.54]; [129.250.3.86]; [129.250.6.188]; [129.250.2.255];
+ [61.200.80.218]; [158.205.192.173]; [158.205.192.86]; [158.205.121.250];
  [154.34.240.254]; [210.152.135.178]\}
 
 En el primer gráfico mostramos como incrementa el RTT a medida que se van enviando los paquetes con un TTL determinado. Se puede ver que cuando enviamos los paquetes con TTLs 2,3, y 4 no obtenemos respuesta, suponemos que hay servidores a dicha distancia no estan configurados para responder paquetes ICMP de tipo Echo Request,o que se perdieron en la red. Tambien, como habiamos dicho antes, suponemos que los saltos de incremento del RTT se debe a una conexión intercontinetal, asi que podemos asumir que hay posible conexiones ente los Hops 1-2, 9-10, 13-14 y 15-16.

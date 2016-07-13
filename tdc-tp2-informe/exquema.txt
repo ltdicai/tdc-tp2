@@ -1,0 +1,73 @@
+
+-Uso de Traceroute para la detección de enlaces de larga distancia-
+
+Introduccion
+	Internet es posible gracias a un conjunto de miles de redes interconectadas entre sí.
+	La conexion entre redes de distintos contitentes se realiza por medio de cables submarinos capaces de transportar grandes volumnes de datos por segundo.
+	En este trabajo analizaremos que tan factible resulta utilizar el RTT entre hots para para descubrir saltos intercontinentales.  
+
+Teoria
+	El Round Trip Time (RTT) es el tiempo que tarda un paquete en ir y volver desde un nodo A (el origen) a un nodo B (el destino) dentro de una red. Se define como 2 * Delay, siendo Delay = ... . Si bien el RTT de enlaces punto a punto puede calcularse a partir del ancho de banda, la velocidad de propagación del medio y otras variables, el RTT de un paquete IP queda sujeto a la ruta que toma un paquete, que puede 
+	Protocolo ICMP
+	Traceroute
+		ICMP
+		Protocolo especial
+	 
+Herramientas
+	Implementacion propia de traceroute.
+		Implementamos nuestra propia herramienta de traceroute siguiendo la técnica de los paquetes ICMP "echo request/echo reply".
+		La herramiente permite definir la cantidad maxima de saltos a analizar, el tiempo considerado antes de levantar timeout para el el envío de un paquete, y un umbral según el cual se considera si es necesario continuar probando un hop. 	
+			porcentaje del tamaño de la rafaga que debe dar timeout en seguidilla
+			Cada vez que se recibe un paquete, se resetea el contador.
+ 
+		Enviamos una rafa de paquetes con un TTL determinado. Otra posilibilidad era hacer la rafaga por camino (enviar todos los TTL hasta llegar al nodo/agotar, y volver a repetir). Elegimos la primera por simplicida de la implementacion.
+
+		Dado que los paquetes se envían independientes uno de otros, pueden existir muchas rutas (que incluso pueden variar entre la ida y la vuelta cada paquete). Por ello, decidimos considerar solo la ruta más problable. Para esto, para cada hop enviamos una rafaga de paquetes "echo request", y consideramos como nodo del camino aquel que haya respondido la mayor cantidad de veces. En este calculo descartamos los timetouts que haya sucedido.
+
+	Para determinar el valor del rtt de cada hop, podriamos utilizar los siguientes acercamientos:
+		Menor RTT: podría suponerse suficiente tomar como RTT de un hop el menor de los tiempos de la muestra. Sin embargo, 
+		Promedio de RTT: 
+			suponemos que este metodo debería dar los peores resultados, pues una demora de una unica respuesta (por ejemplo, por pasar por un punto con congestion), puede desvirtuar completamente el resultado
+		Promedio de RTT prefiltrodos por Cimbala:
+			Usando este metodo, buscamos tomar un promedio de la muestra sin valores espurios 
+		Mediana de RTT: 
+			Dado que puede  existir una varianza importante entre los rtt, tomar la mediana de una muestra relativamente grande resulta interesante.
+	
+	Modificacion de la herramienta para distinguir posibles enlaces automaticamente, utilizando el metodo de Cimbala
+		Una vez definido el camino y los tiempos correspondientes a cada hop, consideramos las diferencias de RTT entre hops sucesivos.
+		Hay dos opciones para tratar los casos en los que haya un hueco de respuesta entre dos hops:
+			Completar el camino, interpolando de alguna manera el tiempo entre los hops con respuesta
+			Descartar los hops sin respuesta en el calculo de las diferencias  
+		
+		Decidimos seguir la segunda opción, porque ...
+
+	
+
+Experimentos
+	Mapa de las universidades
+
+	Comandos:
+		sudo python traceroute_4.py wsu.edu -tr 500 -o EEUU_1_20160710_1000_500
+		sudo python traceroute_4.py www.cs.uoregon.edu -tr 500 -o EEUU_OREGON_20160710_1000_500
+		sudo python traceroute_4.py www.ox.ac.uk -tr 500 -o ENG_20160710_1000_500
+		sudo python traceroute_4.py www.u-tokyo.ac.jp -tr 500 -o JAP_20160710_1000_500
+		sudo python traceroute_4.py www.sydney.edu.au -tr 500 -o AUSTRALIA_20160710_1000_500
+		sudo python traceroute_4.py msu.ru -tr 500 -o RUSIA_20160710_1000_500
+		sudo python traceroute_4.py www.unisa.ac.za -tr 500 -o AFR_20160710_1000_50
+
+	Para cada experimento:
+		Mapa con los puntos marcados
+		Grafico de RTT (lineas)
+		Grafico de RTT relativos (barras)
+		Tabla de saltos (agregar ips)
+
+Analisis de resultados
+	Podemos 
+
+Conclusión
+	Tomar la mediana? 
+	Existen muchos factores que inlfuyen en los tiempos de respuesta (ruteo para cada paquete, congestion, caminos MPLS)
+	Incluso usando una implementación de traceroute que mantenaga un unico camino, la congestion puede alterar el resultado (si solo se miran los tiempos)
+	Mirar tiempo + IP del hop da una mejor idea (por ejemplo, se puede desetimar asaltos dentro de una misma red)
+
+	Queda probar considerar los saltos entre subredes, en lugar de entre hops.
