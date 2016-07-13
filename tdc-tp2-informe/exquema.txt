@@ -24,6 +24,7 @@ Marco teórico
 
 	 
 Herramientas desarrolladas
+
 	Implementacion propia de traceroute.
 		Implementamos nuestra propia herramienta de traceroute siguiendo la técnica de los paquetes ICMP "echo request/echo reply".
 		La herramiente permite definir la cantidad maxima de saltos a analizar, el tiempo considerado antes de levantar timeout para el el envío de un paquete, y un umbral según el cual se considera si es necesario continuar probando un hop. 	

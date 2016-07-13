@@ -8,7 +8,6 @@ from scapy.config import conf
 from modified_thompson import thompson_tau_test
 from collections import defaultdict
 from utiles import *
-from paises2 import *
 
 
 ######## Para correr Script: sudo python traceroute_estimatedRtt_n_zrtt.py 'ip' ########
@@ -199,16 +198,18 @@ def cuerpo(hostname, max_ttl, tam_rafaga, timeout, ptimeout, output_file_name):
     print "Guardando archivo de saltos"
     with open(output_file_name + "_saltos.txt", "w+") as saltosfile:
         titulo = "Saltos:\n---------------"
-        header = "{0:^25s} -> {1:^20s}\t{2:^20s}\t{3:^20s}\t{4:^20s}\t{5:^20s}".format(
+        header = "{0:^36s} -> {1:^36s}\t{2:^16s}\t{3:^16s}\t{4:^16s}\t{5:^16s}".format(
             'Origen', 'Destino', 'Minimo', 'Promedio', 'Promedio Filtrado', 'Mediana')
         saltosfile.write(titulo+"\n"+header+"\n")
         print "\n" + titulo
         print header
         for salto in saltos:
-            temp = "({0:>2d}) {1:<20s} -> ({2:>2d}) {3:<20s}\t{4:^20s}\t{5:^20s}\t{6:^20s}\t{7:^20s}".format(
+            temp = "({0:>2d}) {1:<15s} {2:<15s} -> ({3:>2d}) {4:<15s} {5:<15s}\t{6:^16s}\t{7:^16s}\t{8:^16s}\t{9:^16s}".format(
                 salto['origen']['ttl'],
+                salto['origen']['ip'],
                 salto['origen']['pais'],
                 salto['destino']['ttl'],
+                salto['destino']['ip'],
                 salto['destino']['pais'],
                 (salto['minimo']['outlier'] and '[' or '') + pasar_a_ms(salto['minimo']['valor']) + (salto['minimo']['outlier'] and ']' or ''),
                 (salto['promedio']['outlier'] and '[' or '') + pasar_a_ms(salto['promedio']['valor']) + (salto['promedio']['outlier'] and ']' or ''),
