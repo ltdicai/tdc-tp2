@@ -1,0 +1,25 @@
+Saltos:
+---------------
+               Origen                ->               Destino               	     Minimo     	    Promedio    	Promedio Filtrado	    Mediana     
+( 1) 192.168.0.1     Local           -> ( 6) 200.89.164.129  Argentina      	     4.339 ms   	     6.445 ms   	  [  6.118 ms]  	     7.937 ms   
+( 6) 200.89.164.129  Argentina       -> ( 7) 200.89.165.130  Argentina      	     0.204 ms   	     0.749 ms   	     0.456 ms   	     0.042 ms   
+( 7) 200.89.165.130  Argentina       -> ( 8) 200.89.165.222  Argentina      	     3.941 ms   	     2.125 ms   	     0.474 ms   	     0.033 ms   
+( 8) 200.89.165.222  Argentina       -> ( 9) 195.22.220.172  Italy          	     4.171 ms   	     1.719 ms   	     3.626 ms   	     4.023 ms   
+( 9) 195.22.220.172  Italy           -> (10) 89.221.41.161   Italy          	  [128.229 ms]  	  [124.837 ms]  	  [131.371 ms]  	  [131.667 ms]  
+(10) 89.221.41.161   Italy           -> (11) 89.221.41.161   Italy          	     0.072 ms   	     0.001 ms   	      1.68 ms   	     3.622 ms   
+(11) 89.221.41.161   Italy           -> (12) 154.54.9.17     United States  	     3.966 ms   	  [ 19.383 ms]  	  [ 13.724 ms]  	  [ 15.919 ms]  
+(12) 154.54.9.17     United States   -> (13) 154.54.24.233   United States  	     0.316 ms   	  [  10.08 ms]  	  [  7.997 ms]  	     7.997 ms   
+(13) 154.54.24.233   United States   -> (14) 154.54.24.197   United States  	  [ 20.487 ms]  	  [ 26.152 ms]  	  [ 26.824 ms]  	  [ 24.365 ms]  
+(14) 154.54.24.197   United States   -> (15) 154.54.24.221   United States  	     3.935 ms   	  [ 16.322 ms]  	     2.512 ms   	     3.943 ms   
+(15) 154.54.24.221   United States   -> (16) 154.54.40.109   United States  	     4.041 ms   	  [  8.469 ms]  	  [  5.954 ms]  	     3.611 ms   
+(16) 154.54.40.109   United States   -> (17) 154.54.42.86    United States  	  [  55.49 ms]  	  [ 58.125 ms]  	  [ 56.199 ms]  	  [ 56.054 ms]  
+(17) 154.54.42.86    United States   -> (18) 154.54.58.186   United States  	  [  8.405 ms]  	     2.362 ms   	     1.755 ms   	      0.21 ms   
+(18) 154.54.58.186   United States   -> (19) 154.54.56.238   United States  	     4.206 ms   	     3.239 ms   	     0.215 ms   	     0.156 ms   
+(19) 154.54.56.238   United States   -> (20) 149.14.80.210   United States  	     3.596 ms   	     3.652 ms   	      0.23 ms   	     0.107 ms   
+(20) 149.14.80.210   United States   -> (21) 196.32.209.174  South Africa   	  [179.657 ms]  	  [182.748 ms]  	  [179.487 ms]  	  [183.799 ms]  
+(21) 196.32.209.174  South Africa    -> (22) 155.232.6.65    South Africa   	     0.178 ms   	     3.202 ms   	     2.652 ms   	     0.215 ms   
+(22) 155.232.6.65    South Africa    -> (23) 155.232.6.37    South Africa   	     0.059 ms   	     4.016 ms   	      2.94 ms   	     4.082 ms   
+(23) 155.232.6.37    South Africa    -> (24) 155.232.6.33    South Africa   	     4.143 ms   	     6.909 ms   	     3.838 ms   	     7.848 ms   
+(24) 155.232.6.33    South Africa    -> (25) 155.232.6.142   South Africa   	     3.632 ms   	  [  21.76 ms]  	     2.719 ms   	  [ 11.984 ms]  
+(25) 155.232.6.142   South Africa    -> (26) 155.232.6.145   South Africa   	  [ 12.464 ms]  	  [ 13.205 ms]  	  [ 18.365 ms]  	     8.167 ms   
+(26) 155.232.6.145   South Africa    -> (27) 155.232.6.138   South Africa   	  [ 12.374 ms]  	  [ 24.644 ms]  	  [ 20.551 ms]  	  [ 19.933 ms]  

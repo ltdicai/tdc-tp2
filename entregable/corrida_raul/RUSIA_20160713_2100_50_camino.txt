@@ -1,0 +1,24 @@
+Camino:
+---------------
+TTL	         IP         	        Pais        	     RTT Minimo     	    RTT Promedio    	 RTT Filtrado Prom  	    RTT Mediana     
+ 1	192.168.0.1         	       Local        	      52.087 ms     	      71.956 ms     	      66.082 ms     	      67.777 ms     
+ 2	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 3	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 4	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 5	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 6	200.89.164.141      	     Argentina      	      47.888 ms     	      72.026 ms     	      67.789 ms     	      67.919 ms     
+ 7	200.89.165.130      	     Argentina      	      55.817 ms     	      71.012 ms     	       63.79 ms     	       63.83 ms     
+ 8	200.89.165.222      	     Argentina      	      51.675 ms     	      71.708 ms     	      64.843 ms     	      67.651 ms     
+ 9	190.216.88.33       	     Argentina      	      59.833 ms     	      73.998 ms     	      68.088 ms     	      71.696 ms     
+10	67.17.99.233        	   United States    	     227.355 ms     	     248.667 ms     	     237.063 ms     	     239.807 ms     
+11	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+12	4.69.158.253        	   United States    	     308.078 ms     	     334.203 ms     	      326.02 ms     	     327.801 ms     
+13	4.69.158.253        	   United States    	     311.107 ms     	     331.376 ms     	     325.194 ms     	     325.197 ms     
+14	213.242.110.198     	   United Kingdom   	     314.003 ms     	     331.804 ms     	     325.508 ms     	      326.28 ms     
+15	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+16	194.85.40.229       	       Russia       	     320.094 ms     	     349.639 ms     	      338.62 ms     	     339.799 ms     
+17	194.190.254.118     	       Russia       	     323.727 ms     	     343.675 ms     	     336.555 ms     	     339.717 ms     
+18	93.180.0.172        	       Russia       	     319.933 ms     	     340.264 ms     	     339.032 ms     	     337.793 ms     
+19	188.44.33.30        	       Russia       	     319.898 ms     	     349.899 ms     	     341.636 ms     	     343.889 ms     
+20	188.44.33.2         	       Russia       	     327.834 ms     	     360.686 ms     	     346.137 ms     	     347.852 ms     
+21	188.44.50.103       	       Russia       	     326.728 ms     	       345.1 ms     	     340.466 ms     	     339.949 ms     

@@ -1,0 +1,21 @@
+Camino:
+---------------
+TTL	         IP         	        Pais        	     RTT Minimo     	    RTT Promedio    	 RTT Filtrado Prom  	    RTT Mediana     
+ 1	192.168.0.1         	       Local        	      60.119 ms     	     212.193 ms     	       99.53 ms     	      107.79 ms     
+ 2	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 3	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 4	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 5	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 6	200.89.165.141      	     Argentina      	      71.886 ms     	     191.045 ms     	     106.059 ms     	     115.962 ms     
+ 7	200.89.165.130      	     Argentina      	      67.877 ms     	     162.104 ms     	     101.341 ms     	     111.785 ms     
+ 8	200.89.165.222      	     Argentina      	      59.746 ms     	      334.64 ms     	     104.182 ms     	     171.787 ms     
+ 9	190.216.88.33       	     Argentina      	      67.875 ms     	     330.184 ms     	     107.429 ms     	     133.824 ms     
+10	67.17.94.249        	   United States    	     195.769 ms     	     539.217 ms     	     308.066 ms     	     356.006 ms     
+11	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+12	4.69.132.149        	   United States    	     267.815 ms     	     394.424 ms     	     367.776 ms     	     319.813 ms     
+13	4.69.132.149        	   United States    	     243.679 ms     	     328.314 ms     	     307.944 ms     	     307.656 ms     
+14	4.53.200.2          	   United States    	     275.679 ms     	     453.756 ms     	     299.937 ms     	     311.764 ms     
+15	207.98.64.165       	   United States    	      257.97 ms     	     331.374 ms     	     306.661 ms     	     307.732 ms     
+16	207.98.68.182       	   United States    	     119.405 ms     	     597.955 ms     	     313.137 ms     	      353.95 ms     
+17	128.223.2.1         	   United States    	     259.972 ms     	     316.089 ms     	     303.678 ms     	     307.841 ms     
+18	128.223.4.25        	   United States    	     263.741 ms     	     354.446 ms     	     306.301 ms     	     311.742 ms     

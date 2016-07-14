@@ -1,0 +1,33 @@
+Camino:
+---------------
+TTL	         IP         	        Pais        	     RTT Minimo     	    RTT Promedio    	 RTT Filtrado Prom  	    RTT Mediana     
+ 1	192.168.0.1         	       Local        	      39.748 ms     	      63.719 ms     	      60.306 ms     	      59.867 ms     
+ 2	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 3	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 4	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 5	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 6	200.89.164.129      	     Argentina      	      55.722 ms     	     125.821 ms     	      72.186 ms     	       76.06 ms     
+ 7	200.89.165.130      	     Argentina      	       54.31 ms     	      77.819 ms     	      75.228 ms     	      75.809 ms     
+ 8	200.89.165.222      	     Argentina      	      55.778 ms     	      84.105 ms     	      74.685 ms     	      75.917 ms     
+ 9	195.22.220.172      	       Italy        	      51.829 ms     	      81.382 ms     	      72.982 ms     	      75.637 ms     
+10	89.221.41.161       	       Italy        	     175.992 ms     	     212.629 ms     	     202.749 ms     	     205.626 ms     
+11	89.221.41.161       	       Italy        	      172.02 ms     	     222.594 ms     	     203.352 ms     	     207.597 ms     
+12	154.54.9.17         	   United States    	     179.617 ms     	     205.187 ms     	     203.779 ms     	     203.849 ms     
+13	154.54.24.233       	   United States    	     179.633 ms     	     199.723 ms     	      197.17 ms     	     199.627 ms     
+14	154.54.24.197       	   United States    	     191.714 ms     	     216.617 ms     	     211.934 ms     	     212.022 ms     
+15	154.54.24.221       	   United States    	     202.154 ms     	     228.313 ms     	     221.758 ms     	     223.738 ms     
+16	154.54.40.109       	   United States    	     207.934 ms     	      236.12 ms     	     228.356 ms     	     229.998 ms     
+17	154.54.42.86        	   United States    	     267.759 ms     	     290.378 ms     	     287.978 ms     	     287.885 ms     
+18	154.54.58.186       	   United States    	     266.862 ms     	     291.896 ms     	     287.868 ms     	     287.792 ms     
+19	154.54.56.238       	   United States    	     271.681 ms     	     288.942 ms     	     287.225 ms     	     287.754 ms     
+20	149.14.80.210       	   United States    	     267.863 ms     	     289.917 ms     	     287.583 ms     	     287.862 ms     
+21	196.32.209.174      	    South Africa    	     443.819 ms     	     468.296 ms     	     466.299 ms     	     467.736 ms     
+22	155.232.6.65        	    South Africa    	      451.89 ms     	     468.824 ms     	      467.52 ms     	     467.783 ms     
+23	155.232.6.37        	    South Africa    	      447.84 ms     	     577.277 ms     	     465.979 ms     	     471.801 ms     
+24	155.232.6.33        	    South Africa    	     119.872 ms     	     646.997 ms     	     470.095 ms     	     475.855 ms     
+25	155.232.6.142       	    South Africa    	      43.785 ms     	     662.263 ms     	     464.099 ms     	      475.62 ms     
+26	155.232.6.145       	    South Africa    	     108.012 ms     	     575.334 ms     	     498.355 ms     	     503.831 ms     
+27	155.232.6.138       	    South Africa    	      99.826 ms     	     645.197 ms     	     511.219 ms     	     515.893 ms     
+28	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+29	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+30	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       	      Unknown       

@@ -1,0 +1,15 @@
+Saltos:
+---------------
+               Origen                ->               Destino               	     Minimo     	    Promedio    	Promedio Filtrado	    Mediana     
+( 1) 192.168.0.1     Local           -> ( 6) 200.89.165.141  Argentina      	    11.767 ms   	    21.149 ms   	     6.528 ms   	     8.172 ms   
+( 6) 200.89.165.141  Argentina       -> ( 7) 200.89.165.130  Argentina      	     4.009 ms   	    28.941 ms   	     4.718 ms   	     4.177 ms   
+( 7) 200.89.165.130  Argentina       -> ( 8) 200.89.165.222  Argentina      	     8.131 ms   	   172.537 ms   	     2.841 ms   	    60.002 ms   
+( 8) 200.89.165.222  Argentina       -> ( 9) 190.216.88.33   Argentina      	     8.129 ms   	     4.457 ms   	     3.247 ms   	    37.963 ms   
+( 9) 190.216.88.33   Argentina       -> (10) 67.17.94.249    United States  	   127.894 ms   	   209.033 ms   	  [200.638 ms]  	  [222.181 ms]  
+(10) 67.17.94.249    United States   -> (12) 4.69.132.149    United States  	    72.046 ms   	   144.793 ms   	  [  59.71 ms]  	    36.193 ms   
+(12) 4.69.132.149    United States   -> (13) 4.69.132.149    United States  	    24.136 ms   	    66.109 ms   	  [ 59.833 ms]  	    12.156 ms   
+(13) 4.69.132.149    United States   -> (14) 4.53.200.2      United States  	      32.0 ms   	   125.442 ms   	     8.006 ms   	     4.108 ms   
+(14) 4.53.200.2      United States   -> (15) 207.98.64.165   United States  	    17.709 ms   	   122.382 ms   	     6.724 ms   	     4.032 ms   
+(15) 207.98.64.165   United States   -> (16) 207.98.68.182   United States  	   138.565 ms   	   266.581 ms   	     6.477 ms   	    46.217 ms   
+(16) 207.98.68.182   United States   -> (17) 128.223.2.1     United States  	   140.567 ms   	   281.866 ms   	      9.46 ms   	    46.108 ms   
+(17) 128.223.2.1     United States   -> (18) 128.223.4.25    United States  	     3.769 ms   	    38.357 ms   	     2.623 ms   	     3.901 ms   

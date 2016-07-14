@@ -1,0 +1,16 @@
+Saltos:
+---------------
+               Origen                ->               Destino               	     Minimo     	    Promedio    	Promedio Filtrado	    Mediana     
+( 1) 192.168.0.1     Local           -> ( 6) 200.89.165.141  Argentina      	  [ 15.826 ms]  	  [ 64.942 ms]  	  [ 20.933 ms]  	  [  23.94 ms]  
+( 6) 200.89.165.141  Argentina       -> ( 7) 200.89.165.130  Argentina      	     0.435 ms   	  [ 48.641 ms]  	     6.493 ms   	    11.557 ms   
+( 7) 200.89.165.130  Argentina       -> ( 8) 200.89.165.222  Argentina      	     3.814 ms   	  [  8.216 ms]  	     5.727 ms   	     7.488 ms   
+( 8) 200.89.165.222  Argentina       -> ( 9) 190.216.88.33   Argentina      	      2.11 ms   	      1.25 ms   	     1.817 ms   	     0.344 ms   
+( 9) 190.216.88.33   Argentina       -> (10) 67.17.94.249    United States  	  [125.808 ms]  	  [123.615 ms]  	  [123.297 ms]  	  [124.093 ms]  
+(10) 67.17.94.249    United States   -> (11) 4.68.72.66      United States  	  [ 604.03 ms]  	  [573.248 ms]  	  [581.056 ms]  	  [579.772 ms]  
+(11) 4.68.72.66      United States   -> (12) 4.69.132.149    United States  	  [556.133 ms]  	  [500.499 ms]  	  [537.669 ms]  	  [531.976 ms]  
+(12) 4.69.132.149    United States   -> (13) 4.69.132.149    United States  	     4.174 ms   	  [ 16.821 ms]  	     0.935 ms   	     0.102 ms   
+(13) 4.69.132.149    United States   -> (14) 4.53.200.2      United States  	  [ 16.294 ms]  	     3.905 ms   	  [ 14.657 ms]  	    11.904 ms   
+(14) 4.53.200.2      United States   -> (15) 207.98.64.165   United States  	     0.046 ms   	     1.453 ms   	     2.951 ms   	     3.757 ms   
+(15) 207.98.64.165   United States   -> (16) 207.98.68.182   United States  	     4.017 ms   	     0.539 ms   	     2.807 ms   	     3.825 ms   
+(16) 207.98.68.182   United States   -> (17) 128.223.2.1     United States  	     3.979 ms   	     0.222 ms   	     0.384 ms   	     2.427 ms   
+(17) 128.223.2.1     United States   -> (18) 128.223.4.25    United States  	      0.12 ms   	     4.544 ms   	     3.384 ms   	      1.56 ms   
