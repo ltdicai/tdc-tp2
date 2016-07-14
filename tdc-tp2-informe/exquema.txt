@@ -25,24 +25,22 @@ Marco teórico
 	 
 Herramientas desarrolladas
 
-	Implementacion propia de traceroute.
-		Implementamos nuestra propia herramienta de traceroute siguiendo la técnica de los paquetes ICMP "echo request/echo reply".
-		La herramiente permite definir la cantidad maxima de saltos a analizar, el tiempo considerado antes de levantar timeout para el el envío de un paquete, y un umbral según el cual se considera si es necesario continuar probando un hop. 	
-			porcentaje del tamaño de la rafaga que debe dar timeout en seguidilla
-			Cada vez que se recibe un paquete, se resetea el contador.
- 
-		Enviamos una rafa de paquetes con un TTL determinado. Otra posilibilidad era hacer la rafaga por camino (enviar todos los TTL hasta llegar al nodo/agotar, y volver a repetir). Elegimos la primera por simplicida de la implementacion.
+	Traceroute
+		Implementamos nuestra propia herramienta de traceroute siguiendo la técnica del envío de paquetes ICMP "echo request"/"echo replay". Consideramos dos posibles implementaciones: el algoritmo estandard, que consiste en enviar para cada TTL una ráfaga de paquetes; y una modificación en la que se envíe un paquete por TTL hasta alcanzar el host destino o superar el límite de saltos y repetir desde el principio. Elegimos la primera por simplicida de la implementación al momento de calcular el valor del RTT para cada salto.
 
-		Dado que los paquetes se envían independientes uno de otros, pueden existir muchas rutas (que incluso pueden variar entre la ida y la vuelta cada paquete). Por ello, decidimos considerar solo la ruta más problable. Para esto, para cada hop enviamos una rafaga de paquetes "echo request", y consideramos como nodo del camino aquel que haya respondido la mayor cantidad de veces. En este calculo descartamos los timetouts que haya sucedido.
 
-	Para determinar el valor del rtt de cada hop, podriamos utilizar los siguientes acercamientos:
-		Menor RTT: podría suponerse suficiente tomar como RTT de un hop el menor de los tiempos de la muestra. Sin embargo, 
-		Promedio de RTT: 
-			suponemos que este metodo debería dar los peores resultados, pues una demora de una unica respuesta (por ejemplo, por pasar por un punto con congestion), puede desvirtuar completamente el resultado
-		Promedio de RTT prefiltrodos por Cimbala:
-			Usando este metodo, buscamos tomar un promedio de la muestra sin valores espurios 
-		Mediana de RTT: 
-			Dado que puede  existir una varianza importante entre los rtt, tomar la mediana de una muestra relativamente grande resulta interesante.
+		Un punto a considerar cuando se realiza traceroute por ICMP es que cada paquete puede seguir una ruta distinta a la recorrida por los demás (y las rutas  pueden variar incluso entre la ida y la vuelta de un mismo paquete). Por lo tanto, para un TLL dado podríamos obtener respuestas de varios hosts distintos. Para lidiar con este problema, decidimos considerar solo la ruta más problable. Para esto, por cada rafaga de paquetes "echo request" consideramos como nodo del camino aquel que haya respondido la mayor cantidad de veces (al calcular la frecuencia descartamos los timetouts que hayan sucedido).
+
+		Otro detalle importante es que los RTT medidos para un host pueden variar considerablemente por la misma independencia entre paquetes antes mencionada. Teniendo en cuenta el objetivo de nuestra herramienta, resulta necesario determinar el valor del RTT para cada hop a partir de una muestra de n mediciones. Existen varias alternativas y la elección de una u otra depende de que busquemos medir y que propiedades consideremos más relevantes. En principio, podríamos utilizar cualquiera de las siguientes:
+			Menor RTT
+			RTT Promedio
+			RTT Promedio, quitando previamente los outliers de la muestra (con el método de Cimbala)
+			Mediana de RTT
+
+		Nos decantamos por utilizar el RTT promedio pre-filtrado, pues esperamos que suavice los valores medidos pero sin verse demasiado afectado por los valores de los extremos. Más alla de esto, mostramos calculamos las otras opciones a modo de comparación.
+
+La herramienta permite definir la cantidad maxima de saltos esperados, el tiempo de timeout para el envío de un paquete, y la cantidad de timeouts seguidos (dado en porcentaje del tamaño de la rafaga) que se toleran antes de decidir que para un TTL no hay respuseta. 	
+
 	
 	Modificacion de la herramienta para distinguir posibles enlaces automaticamente, utilizando el metodo de Cimbala
 		Una vez definido el camino y los tiempos correspondientes a cada hop, consideramos las diferencias de RTT entre hops sucesivos.
@@ -58,13 +56,10 @@ Experimentos
 	Mapa de las universidades
 
 	Comandos:
-		sudo python traceroute_4.py wsu.edu -tr 500 -o EEUU_1_20160710_1000_500
-		sudo python traceroute_4.py www.cs.uoregon.edu -tr 500 -o EEUU_OREGON_20160710_1000_500
-		sudo python traceroute_4.py www.ox.ac.uk -tr 500 -o ENG_20160710_1000_500
-		sudo python traceroute_4.py www.u-tokyo.ac.jp -tr 500 -o JAP_20160710_1000_500
-		sudo python traceroute_4.py www.sydney.edu.au -tr 500 -o AUSTRALIA_20160710_1000_500
-		sudo python traceroute_4.py msu.ru -tr 500 -o RUSIA_20160710_1000_500
-		sudo python traceroute_4.py www.unisa.ac.za -tr 500 -o AFR_20160710_1000_50
+		EEUU: sudo python traceroute_4.py www.cs.uoregon.edu -tr 500 -o EEUU_OREGON_20160710_1000_500
+		JAPON: sudo python traceroute_4.py www.u-tokyo.ac.jp -tr 500 -o JAP_20160710_1000_500
+		RUSIA: sudo python traceroute_4.py msu.ru -tr 500 -o RUSIA_20160710_1000_500
+		SUDAFRICA: sudo python traceroute_4.py www.unisa.ac.za -tr 500 -o AFR_20160710_1000_50
 
 	Para cada experimento:
 		Mapa con los puntos marcados
@@ -77,8 +72,8 @@ Analisis de resultados
 
 Conclusión
 	Tomar la mediana? 
-	Existen muchos factores que inlfuyen en los tiempos de respuesta (ruteo para cada paquete, congestion, caminos MPLS)
-	Incluso usando una implementación de traceroute que mantenaga un unico camino, la congestion puede alterar el resultado (si solo se miran los tiempos)
+	Existen muchos factores que influyen en los tiempos de respuesta (el tipo de conexion a internet, la velocidad de internet, el ruteo de cada paquete, la congestion, los routers MPLS)
+	Incluso usando una implementación de traceroute que mantenaga un único camino, problemas como congestión pueden el resultado (si solo se miran los tiempos)
 	Mirar tiempo + IP del hop da una mejor idea (por ejemplo, se puede desetimar asaltos dentro de una misma red)
 
 	Queda probar considerar los saltos entre subredes, en lugar de entre hops.
