@@ -1,0 +1,27 @@
+Camino:
+---------------
+TTL	         IP         	        Pais        	     RTT Minimo     	    RTT Promedio    	 RTT Filtrado Prom  	    RTT Mediana     
+ 1	192.168.1.1         	       Local        	      39.717 ms     	      55.753 ms     	      51.747 ms     	       55.78 ms     
+ 2	181.171.25.1        	     Argentina      	      43.934 ms     	      68.906 ms     	      63.746 ms     	      63.891 ms     
+ 3	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 4	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 5	None                	      Unknown       	      Unknown       	      Unknown       	      Unknown       	      Unknown       
+ 6	200.89.165.133      	     Argentina      	      47.885 ms     	       70.91 ms     	       69.78 ms     	      71.767 ms     
+ 7	200.89.165.130      	     Argentina      	      47.874 ms     	      74.574 ms     	      69.433 ms     	      67.937 ms     
+ 8	200.89.165.222      	     Argentina      	       47.89 ms     	      72.986 ms     	      68.177 ms     	      71.729 ms     
+ 9	195.22.220.16       	       Italy        	      43.734 ms     	       73.26 ms     	      70.756 ms     	      71.838 ms     
+10	195.22.219.3        	       Italy        	      63.879 ms     	      97.504 ms     	      97.003 ms     	      95.896 ms     
+11	195.22.219.3        	       Italy        	      75.816 ms     	       94.42 ms     	       94.42 ms     	      93.645 ms     
+12	149.3.181.65        	       Italy        	     199.743 ms     	     219.311 ms     	     213.193 ms     	     215.922 ms     
+13	129.250.2.227       	   United States    	     231.776 ms     	     254.786 ms     	     253.102 ms     	     255.786 ms     
+14	129.250.4.13        	   United States    	     275.803 ms     	     310.901 ms     	     309.186 ms     	     311.856 ms     
+15	129.250.2.54        	   United States    	     283.854 ms     	     311.962 ms     	     307.793 ms     	     307.907 ms     
+16	129.250.3.86        	   United States    	     383.986 ms     	      407.87 ms     	     405.744 ms     	      407.83 ms     
+17	129.250.6.188       	   United States    	     363.859 ms     	      402.73 ms     	     394.101 ms     	     395.942 ms     
+18	129.250.2.255       	   United States    	     359.844 ms     	     382.336 ms     	     379.939 ms     	     379.875 ms     
+19	61.200.80.218       	       Japan        	     363.811 ms     	     383.069 ms     	     382.562 ms     	     383.867 ms     
+20	158.205.192.173     	       Japan        	      387.81 ms     	     410.006 ms     	     407.439 ms     	     411.796 ms     
+21	158.205.192.86      	       Japan        	      379.85 ms     	     409.316 ms     	     407.947 ms     	     407.853 ms     
+22	158.205.121.250     	       Japan        	     391.917 ms     	     422.305 ms     	     406.837 ms     	     407.947 ms     
+23	154.34.240.254      	       Japan        	     372.009 ms     	     393.173 ms     	     391.895 ms     	     391.868 ms     
+24	210.152.135.178     	       Japan        	     371.869 ms     	     389.939 ms     	     386.024 ms     	     387.879 ms     

@@ -1,0 +1,18 @@
+Saltos:
+---------------
+               Origen                ->               Destino               	     Minimo     	    Promedio    	Promedio Filtrado	    Mediana     
+( 1) 192.168.1.1     Local           -> ( 2) 181.171.25.1    Argentina      	  [ 15.906 ms]  	  [ 14.494 ms]  	  [ 13.537 ms]  	  [ 10.035 ms]  
+( 2) 181.171.25.1    Argentina       -> ( 6) 200.89.165.181  Argentina      	     4.105 ms   	     1.771 ms   	     0.788 ms   	     2.026 ms   
+( 6) 200.89.165.181  Argentina       -> ( 7) 200.89.165.130  Argentina      	     0.129 ms   	     0.295 ms   	     3.838 ms   	      3.95 ms   
+( 7) 200.89.165.130  Argentina       -> ( 8) 200.89.165.222  Argentina      	     3.943 ms   	     3.578 ms   	     2.593 ms   	     0.054 ms   
+( 8) 200.89.165.222  Argentina       -> ( 9) 190.216.88.33   Argentina      	     3.851 ms   	     3.611 ms   	      4.04 ms   	     0.099 ms   
+( 9) 190.216.88.33   Argentina       -> (10) 67.17.94.249    United States  	  [126.387 ms]  	  [130.208 ms]  	  [132.977 ms]  	  [135.874 ms]  
+(10) 67.17.94.249    United States   -> (12) 4.69.158.249    United States  	  [125.487 ms]  	  [124.887 ms]  	  [124.886 ms]  	  [124.128 ms]  
+(12) 4.69.158.249    United States   -> (13) 4.69.158.249    United States  	     3.613 ms   	     5.322 ms   	  [  7.367 ms]  	  [  8.002 ms]  
+(13) 4.69.158.249    United States   -> (14) 213.242.110.198 United Kingdom 	     0.435 ms   	     3.269 ms   	     3.407 ms   	     5.897 ms   
+(14) 213.242.110.198 United Kingdom  -> (16) 194.85.40.229   Russia         	  [ 24.007 ms]  	  [ 25.624 ms]  	  [ 18.416 ms]  	  [ 18.046 ms]  
+(16) 194.85.40.229   Russia          -> (17) 194.190.254.118 Russia         	     0.079 ms   	  [ 10.575 ms]  	     5.819 ms   	     6.012 ms   
+(17) 194.190.254.118 Russia          -> (18) 93.180.0.174    Russia         	     3.938 ms   	     4.848 ms   	      3.55 ms   	     3.992 ms   
+(18) 93.180.0.174    Russia          -> (19) 188.44.33.30    Russia         	     0.054 ms   	     0.633 ms   	     1.592 ms   	     1.963 ms   
+(19) 188.44.33.30    Russia          -> (20) 188.44.33.2     Russia         	      0.13 ms   	     1.562 ms   	     0.809 ms   	     2.016 ms   
+(20) 188.44.33.2     Russia          -> (21) 188.44.50.103   Russia         	     3.993 ms   	     0.804 ms   	     4.085 ms   	     2.035 ms   
