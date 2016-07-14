@@ -6,7 +6,8 @@ En este trabajo experimentaremos con herramientas y técnicas frecuentemente uti
 Analizaremos que tan factible resulta utilizar los datos estadisticos conseguidos mediante una implementacion propia de un traceroute, para detectar saltos intercontinentales en las rutas que atraviesan los paquetes en Internet.  
 Se nos pide utilizar como objetivos cuatro universidades ubicadas en diferentes partes del mundo, y a distancias variadas.
 
-Los conceptos teóricos sobre los que basaremos el analisis se presentan a continuación: 
+%%Los conceptos teóricos sobre los que basaremos el analisis se presentan a continuación: 
+\section{Marco teórico}
 
 \subsection{Protocolo de Mensajes de Control de Internet- ICMP}
 
@@ -21,6 +22,6 @@ Exiten varias maneras de implementar esta herramienta, usualmente se envian paqu
 
 El RTT es el tiempo que tarda un paquete en ir y volver desde un nodo A (el origen) a un nodo B (el destino) dentro de una red. 
 Cuando se trata de enlaces punto a punto, se define como 2 * Delay. 
-Si bien a nivel de enlace el Delay puede calcularse a partir de variables conocidas (ancho de banda, velocidad de propagación del medio, etc), a nivel de red el RTT de un paquete IP queda sujeto a la ruta que este toma.
-Asi el RTT de un paquete que viaja entre varias redes interconectadas depende de variables desconocidadas de los enlace intermedios.
+Si bien a nivel de enlace puede realizarse una estimación relativamente confiable del Delay a partir de variables conocidas (ancho de banda, velocidad de propagación del medio, etc), a nivel de red el RTT de un paquete IP queda sujeto a la ruta que este toma.
+Así, el RTT de un paquete que viaja entre varias redes interconectadas depende de variables desconocidadas de los enlace intermedios, y empiezan a cobrar mayor importancia factores como la congestión de los routers intermedios. Por lo tanto, en este trabajo solo consideraremos al RTT en su sentido empírico
 	
