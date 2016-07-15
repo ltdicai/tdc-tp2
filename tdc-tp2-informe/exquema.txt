@@ -1,5 +1,5 @@
 
--Uso de Traceroute para la detección de enlaces de larga distancia-
+-Uso de Traceroute para la detección automática de enlaces de larga distancia utilizando Cimbala-
 
 Introduccion
 	Internet es posible gracias a un conjunto de miles de redes interconectadas entre sí.
@@ -25,30 +25,43 @@ Marco teórico
 	 
 Herramientas desarrolladas
 
-	Traceroute
-		Implementamos nuestra propia herramienta de traceroute siguiendo la técnica del envío de paquetes ICMP "echo request"/"echo replay". Consideramos dos posibles implementaciones: el algoritmo estandard, que consiste en enviar para cada TTL una ráfaga de paquetes; y una modificación en la que se envíe un paquete por TTL hasta alcanzar el host destino o superar el límite de saltos y repetir desde el principio. Elegimos la primera por simplicida de la implementación al momento de calcular el valor del RTT para cada salto.
+	Traceroute: idea
+		Implementamos nuestra propia herramienta de traceroute siguiendo la técnica del envío de paquetes ICMP "echo request"/"echo replay". Consideramos dos posibles implementaciones: el algoritmo estandard, que consiste en enviar para cada TTL una ráfaga de paquetes; y una modificación en la que se envíe un paquete por TTL hasta alcanzar el host destino o superar el límite de saltos y repetir desde el principio. Elegimos la primera por simplicida de la implementación al momento de calcular el valor del RTT.
 
+		Un punto a considerar cuando se realiza traceroute con ICMP es que cada paquete puede seguir una ruta distinta a la recorrida por los demás (y las rutas  pueden variar incluso entre la ida y la vuelta de un mismo paquete). Por lo tanto, para un TLL dado podríamos obtener respuestas de varios hosts distintos. Para lidiar con este problema, decidimos considerar solo la ruta más problable. Para esto, por cada rafaga de paquetes "echo request" consideramos como nodo del camino aquel que haya respondido la mayor cantidad de veces (al calcular la frecuencia descartamos los timetouts que hayan sucedido).
 
-		Un punto a considerar cuando se realiza traceroute por ICMP es que cada paquete puede seguir una ruta distinta a la recorrida por los demás (y las rutas  pueden variar incluso entre la ida y la vuelta de un mismo paquete). Por lo tanto, para un TLL dado podríamos obtener respuestas de varios hosts distintos. Para lidiar con este problema, decidimos considerar solo la ruta más problable. Para esto, por cada rafaga de paquetes "echo request" consideramos como nodo del camino aquel que haya respondido la mayor cantidad de veces (al calcular la frecuencia descartamos los timetouts que hayan sucedido).
-
-		Otro detalle importante es que los RTT medidos para un host pueden variar considerablemente por la misma independencia entre paquetes antes mencionada. Teniendo en cuenta el objetivo de nuestra herramienta, resulta necesario determinar el valor del RTT para cada hop a partir de una muestra de n mediciones. Existen varias alternativas y la elección de una u otra depende de que busquemos medir y que propiedades consideremos más relevantes. En principio, podríamos utilizar cualquiera de las siguientes:
+		Existe otro detalle a resolver una vez que quedan determinados los host del camino: para cada host tenemos una muestra de RTTs que pueden  pueden variar considerablemente. Teniendo en cuenta el objetivo de nuestra herramienta es estimar un camino con los valores esperados de RTT entre nodos, sopesamos varias alternativas para aplanar los datos. Entre ellas analizamos las siguientes:
 			Menor RTT
 			RTT Promedio
 			RTT Promedio, quitando previamente los outliers de la muestra (con el método de Cimbala)
 			Mediana de RTT
 
-		Nos decantamos por utilizar el RTT promedio pre-filtrado, pues esperamos que suavice los valores medidos pero sin verse demasiado afectado por los valores de los extremos. Más alla de esto, mostramos calculamos las otras opciones a modo de comparación.
+		La herramienta calcula todas ella a modo de comparación, pero para los análisis nos decantamos por utilizar el RTT promedio pre-filtrado, pues esperamos que resulte en valores significativos que no se vean afectados por datos espurios. 
 
-La herramienta permite definir la cantidad maxima de saltos esperados, el tiempo de timeout para el envío de un paquete, y la cantidad de timeouts seguidos (dado en porcentaje del tamaño de la rafaga) que se toleran antes de decidir que para un TTL no hay respuseta. 	
 
-	
-	Modificacion de la herramienta para distinguir posibles enlaces automaticamente, utilizando el metodo de Cimbala
-		Una vez definido el camino y los tiempos correspondientes a cada hop, consideramos las diferencias de RTT entre hops sucesivos.
-		Hay dos opciones para tratar los casos en los que haya un hueco de respuesta entre dos hops:
-			Completar el camino, interpolando de alguna manera el tiempo entre los hops con respuesta
-			Descartar los hops sin respuesta en el calculo de las diferencias  
+	Detección automática de enlaces de enlaces intercontinentales 
 		
-		Decidimos seguir la segunda opción, porque ...
+		Una vez determinado un camino y los RTT correspondientes, estamos en condiciones de comenzar el análisis para intentar detectar automáticamente los enlaces intercontinentales de larga distancia basandonos en la técnica de estimación de outliers propuesta por Cimbala. Para ello, obtenemos los RTT relativos entre hops consecutivos y aplicamos el algoritmo de Cimbala a fin de detectar outliers. Aquellos saltos que presenten outliers son los que consideraremos como posibles saltos intercontitentales. 
+
+Resulta importante  considerar la posibilidad de que algunos hops no tengan definido su RTT. Esto puede suceder cuando, por ejemplo, el hop no implementaba ICMP o se encontraba detrás de un firewall que bloqueaba este protocolo. Contemplamos la opción de interpolar estos faltantes, pero concluimos que la falta de más información nos posibilita solo a aplicar un interpolado lineal que resultaría en información "suavizada" que juegue negativamente al momento de aplicar Cimbala. Por esto, decidimos utilizar solamente los hops con RTT definido: si detectamos un posible salto intercontinental y vemos que los hops no son consecutivos, al menos podemos deducir que el salto ocurre entre esos host. 
+
+
+	Implementacion
+
+La herramienta desarrollada permite definir los siguientes parametros de ejecución:
+	MAT_RAFAGA: tamaño de la rafaga para cada TTL
+	MAX_TTL: cantidad maxima de saltos esperados
+	TIMEOUT: tiempo de espera, medido en segundos 
+	P: Tolerancia a timeouts: cantidad de timeouts seguidos que se toleran antes de decidir que no hay respuesta, medido en porcentaje del tamaño de la rafaga.
+
+El codigo se divide en tres funciones principales
+	rastrear: es la implementacion del algoritmo de traceroute. Devuelve un muestreo de RTTs por TTL.
+
+	generar_camino: a partir del muestreo devuelto por 'rastrear', decide cual es el camino más probable y calcula los RTT correspondientes a cada hop.
+
+	detectar_enlaces_intercontinentales: dato un camino devuelto por 'generar_camino', calcula los RTT entre hops y marca aquellos que pueden ser saltos intercontinentales mediante la deteccion de outlier según el algoritmo de Cimbala.
+	
+
 
 	
 
