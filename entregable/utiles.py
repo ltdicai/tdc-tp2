@@ -1,3 +1,4 @@
+from geoip2.database import Reader
 
 def mediana(lst):
     sortedLst = sorted(lst)
@@ -36,3 +37,24 @@ def minimo(lst):
             if lst[i] < min:
                 min = lst[i]
     return min
+
+
+def obtener_pais(ip):
+    try:
+        country_database = Reader("GeoLite2-Country.mmdb")
+    except:
+        country_database = None
+
+    if ip is None or country_database is None:
+        return "Unknown"
+    if ip.startswith("10.") or ip.startswith("192.168."):
+        return "Local"
+    try:
+        response = country_database.country(ip.strip())
+        if response.country.name:
+            return response.country.name
+        else:
+            return response.continent.name
+    except Exception, exc:
+        print exc
+        return "Unknown"
