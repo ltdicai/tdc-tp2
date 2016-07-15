@@ -165,7 +165,7 @@ def main(argv):
         help=u"Tiempo de espera antes de decidir que un nodo no responde."
     )
     parser.add_argument(
-        "--ptimeout", "-p", type=float, default=0.1,
+        "--ptimeout", "-p", type=float, default=0.3,
         help=u"Valor entre 0 y 1. Porcentaje de envíos con timeout (en seguidilla) necesario para deducir que un hop no responde, y continuar con el siguiente hop."
     )
     parser.add_argument(
