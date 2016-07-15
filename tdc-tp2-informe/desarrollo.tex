@@ -2,7 +2,7 @@
 
 \subsection{Traceroute: idea}
 
-Implementamos nuestra propia herramienta de traceroute siguiendo la técnica del envío de paquetes ICMP ECHO_REQUEST/TIME_EXCEEDED/ECHO_REPLY. Consideramos dos posibles implementaciones: el algoritmo estandard, que consiste en enviar para cada TTL una ráfaga de paquetes; y una modificación en la que se envíe un paquete por TTL hasta alcanzar el host destino o superar el límite de saltos y repetir desde el principio. Elegimos la primera por simplicida de la implementación al momento de calcular el valor del RTT.
+Implementamos nuestra propia herramienta de traceroute siguiendo la técnica del envío de paquetes ICMP ECHO\_REQUEST/TIME\_EXCEEDED/ECHO\_REPLY. Consideramos dos posibles implementaciones: el algoritmo estandard, que consiste en enviar para cada TTL una ráfaga de paquetes; y una modificación en la que se envíe un paquete por TTL hasta alcanzar el host destino o superar el límite de saltos y repetir desde el principio. Elegimos la primera por simplicida de la implementación al momento de calcular el valor del RTT.
 
 Un punto a considerar cuando se realiza traceroute con ICMP es que cada paquete puede seguir una ruta distinta a la recorrida por los demás (y las rutas  pueden variar incluso entre la ida y la vuelta de un mismo paquete). Por lo tanto, para un TLL dado podríamos obtener respuestas de varios hosts distintos. Para lidiar con este problema, decidimos considerar solo la ruta más problable. Para esto, por cada rafaga de paquetes "echo request" consideramos como nodo del camino aquel que haya respondido la mayor cantidad de veces (al calcular la frecuencia descartamos los timetouts que hayan sucedido).
 
@@ -27,8 +27,8 @@ Resulta importante  considerar la posibilidad de que algunos hops no tengan defi
 
 La herramienta desarrollada permite definir los siguientes parametros de ejecución:
 \begin{itemize}
-	\item{MAT_RAFAGA: tamaño de la rafaga para cada TTL}
-	\item{MAX_TTL: cantidad maxima de saltos esperados}
+	\item{MAT\_RAFAGA: tamaño de la rafaga para cada TTL}
+	\item{MAX\_TTL: cantidad maxima de saltos esperados}
 	\item{TIMEOUT: tiempo de espera, medido en segundos }
 	\item{P: Tolerancia a timeouts: cantidad de timeouts seguidos que se toleran antes de decidir que no hay respuesta, medido en porcentaje del tamaño de la rafaga.}
 	\item{OUTPUT: identificador para generar los nombres de los archivos de salida}
@@ -37,8 +37,8 @@ La herramienta desarrollada permite definir los siguientes parametros de ejecuci
 El código se divide en tres funciones principales
 \begin{itemize}
 	\item{rastrear: es la implementacion del algoritmo de traceroute utilizando paquetes ICMP. Devuelve un muestreo de RTTs por TTL.}
-	\item{generar_camino: a partir del muestreo devuelto por 'rastrear', decide cual es el camino más probable y calcula los RTT correspondientes a cada hop.}
-	\item{detectar_enlaces_intercontinentales: dato un camino devuelto por 'generar_camino', calcula los RTT entre hops y marca aquellos que pueden ser saltos intercontinentales mediante la deteccion de outlier según el algoritmo de Cimbala.}
+	\item{generar\_camino: a partir del muestreo devuelto por 'rastrear', decide cual es el camino más probable y calcula los RTT correspondientes a cada hop.}
+	\item{detectar\_enlaces\_intercontinentales: dato un camino devuelto por 'generar\_camino', calcula los RTT entre hops y marca aquellos que pueden ser saltos intercontinentales mediante la deteccion de outlier según el algoritmo de Cimbala.}
 \end{itemize}	
 
 Para el mapeo de IP a Pais utilizamos una base de datos obtenida de www.maxmind.com actualizada al 09/07/2016 en conjunto con el paquete geoip2 de python. Descartamos otras fuentes de datos que debido a que presentaban limitaciones de performance, no proveian API para automatizar la consulta o estaban desactualizadas. 
@@ -62,7 +62,7 @@ Las destinos elegidos fueron:
  
 \begin{figure}[H]
   \centering
-  \includegraphics[scale = 0.6]{imagenes/mapa.png}
+  \includegraphics[scale = 0.3]{imagenes/mapa.png}
   \caption{Ubicación de las universidades elegidas}
   \label{histogramaprobabilidadesModel1}
 \end{figure}
@@ -70,17 +70,22 @@ Las destinos elegidos fueron:
 
 Los experimentos se realizaron sobre en una computadora conectada a internet (proveedor Fibertel) por medio de un enlace WiFi. Se utilizaron los siguientes comandos (donde n es el tamaño de la ráfaga) 
 \begin{itemize}
-  \item EEUU:      sudo python traceroute.py www.cs.uoregon.edu -tr n -p 0.3 -m 30 -o EEUU_OREGON_n
-  \item JAPON:     sudo python traceroute.py www.u-tokyo.ac.jp  -tr n -p 0.3 -m 30 -o JAP_n
-  \item RUSIA:     sudo python traceroute.py msu.ru             -tr n -p 0.3 -m 30 -o RUSIA_n
-  \item SUDAFRICA: sudo python traceroute.py www.unisa.ac.za    -tr n -p 0.3 -m 30 -o AFR_n 
+  \item EEUU:      sudo python traceroute.py www.cs.uoregon.edu -tr n -p 0.3 -m 30 -o EEUU\_OREGON\_n
+  \item JAPON:     sudo python traceroute.py www.u-tokyo.ac.jp  -tr n -p 0.3 -m 30 -o JAP\_n
+  \item RUSIA:     sudo python traceroute.py msu.ru             -tr n -p 0.3 -m 30 -o RUSIA\_n
+  \item SUDAFRICA: sudo python traceroute.py www.unisa.ac.za    -tr n -p 0.3 -m 30 -o AFR\_n 
 \end{itemize}
 
 Los resultados obtenidos son los siguientes.
 
-Africa
+
+\begin{table}[]
+\centering
+\caption{Africa}
+%\label{Universidad}
 \begin{tabular}{ | c | c | c | c | c | c | }
-  & & & Rafaga = 50 & Rafaga = 150 &Rafaga = 300  \\ \hline
+	\hline 
+  & & & Rafaga = 50 & Rafaga = 150 &Rafaga = 300  \\ %\hline
   TTL	&         IP        & 	        Pais      &  	 RTT Filtrado Prom  &	 RTT Filtrado Prom  & RTT Filtrado Prom  \\ \hline  
   1	&192.168.0.1        & 	       Local      &  	      63.183 ms     &	       63.66 ms     &      60.306 ms     \\ \hline  
   2	&None               & 	      Unknown     &  	      Unknown       &	      Unknown       &      Unknown       \\ \hline  
@@ -113,10 +118,16 @@ Africa
   29	&None               & 	      Unknown     &  	      Unknown       &	      Unknown       &      Unknown       \\ \hline  
   30	&None               & 	      Unknown     &  	      Unknown       &	      Unknown       &      Unknown       \\ \hline  
 \end{tabular}
+\end{table}
 
-EEUU
-\begin{tabular}{}
-  & & & 50	& 150	& 300 \\ \hline
+
+\begin{table}[]
+\centering
+\caption{EEUU}
+%\label{Universidad}
+\begin{tabular}{ | c | c | c | c | c | c | }
+	\hline 
+  & & & 50	& 150	& 300 \\ %\hline
 TTL	&          IP         	     &    Pais        & 	 RTT Filtrado Prom  	&  RTT Filtrado Prom  & 	 RTT Filtrado Prom  \\ \hline  
 1	& 192.168.0.1       &   	       Local      &   	       99.53 ms    &  	     103.514 ms   &   	      57.461 ms   \\ \hline    
 2	& None               &  	      Unknown     &   	      Unknown      &  	      Unknown     &   	      Unknown     \\ \hline    
@@ -137,10 +148,16 @@ TTL	&          IP         	     &    Pais        & 	 RTT Filtrado Prom  	&  RTT 
 17	& 128.223.2.1       &   	   United States  &   	     303.678 ms    &  	     308.079 ms   &   	     261.194 ms   \\ \hline    
 18	& 128.223.4.25      &   	   United States  &   	     306.301 ms    &  	     306.542 ms   &   	      257.81 ms   \\ \hline    
 \end{tabular}
+\end{table}
 
-JAP
-\begin{tabular}{}
- &&& 50 & 150 & 300 \\ \hline
+
+\begin{table}[]
+\centering
+\caption{Japón}
+%\label{Universidad}
+\begin{tabular}{ | c | c | c | c | c | c | }
+\hline
+ &&& 50 & 150 & 300 \\ %\hline
 TTL	&         IP     &    	        Pais     &   	 RTT Filtrado Prom & 	 RTT Filtrado Prom  &	 RTT Filtrado Prom \\ \hline  
 1	&192.168.0.1     &    	       Local     &   	      59.684 ms    & 	       62.26 ms     &	      65.531 ms  \\ \hline    
 2	&None            &    	      Unknown    &   	      Unknown      & 	      Unknown       &	      Unknown    \\ \hline    
@@ -168,10 +185,15 @@ TTL	&         IP     &    	        Pais     &   	 RTT Filtrado Prom & 	 RTT Filt
 24	&210152135178	 &      Japan        	  &    397.01 ms     	    & 416.837 ms     	     &401.609 ms         \\ \hline
 
 \end{tabular}
+\end{table}
 
-rusia
-\begin{tabular}{}
- & & & 50 & 150 & 300 \\ \hline
+\begin{table}[]
+\centering
+\caption{Rusia}
+%\label{Universidad}
+\begin{tabular}{ | c | c | c | c | c | c | }
+\hline
+ & & & 50 & 150 & 300 \\ %\hline
 TTL	&         IP    &     	        Pais     &   	 RTT Filtrado Prom&  	 RTT Filtrado Prom&  	 RTT Filtrado Prom  \\ \hline
 1	&192.168.0.1    &     	       Local     &   	      66.082 ms   &  	     101.009 ms   &  	      62.141 ms \\ \hline    
 2	&None           &     	      Unknown    &   	      Unknown     &  	      Unknown     &  	      Unknown   \\ \hline    
@@ -196,7 +218,7 @@ TTL	&         IP    &     	        Pais     &   	 RTT Filtrado Prom&  	 RTT Filt
 21	&188.44.50.103  &     	       Russia    &   	     340.466 ms   &  	     410.042 ms   &  	     333.481 ms \\ \hline     
 
 \end{tabular}
-
+\end{table}
 	
 	Para cada experimento:
 		Mapa con los puntos marcados

@@ -19,9 +19,9 @@ Forma parte del conjunto de protocolos IP (RFC 792).
 Los mensajes ICMP son comúnmente generados en respuesta a errores en los datagramas de IP para diagnóstico y ruteo. Estos mensajes son construidos en el nivel de capa de red y se encuentran dentro de los paquetes de IP estándar.
 En esta oportunidad nos concentraremos en 3 tipos de paquetes ICMP:
 \begin{itemize}
- \item ECHO_REQUEST (tipo 8): los paquetes ECHO_REQUEST son utilizados para solicitar a un host que responda con un paquete ICMP ECHO_REPLY. Esto sirve para saber, por ejemplo, si un host es alcanzable.
- \item ECHO_REPLY (tipo 0): este tipo de paquete se envía al recibir un paquete ICMP ECHO_REQUEST.
- \item TIME_EXCEEDED (tipo 11): indica al host origen que un paquete IP agoto su tiempo de vida (Time-to-live, TTL) y fue descartado antes de alcanzar el hsot destino.
+ \item ECHO\_REQUEST (tipo 8): los paquetes ECHO\_REQUEST son utilizados para solicitar a un host que responda con un paquete ICMP ECHO\_REPLY. Esto sirve para saber, por ejemplo, si un host es alcanzable.
+ \item ECHO\_REPLY (tipo 0): este tipo de paquete se envía al recibir un paquete ICMP ECHO\_REQUEST.
+ \item TIME\_EXCEEDED (tipo 11): indica al host origen que un paquete IP agoto su tiempo de vida (Time-to-live, TTL) y fue descartado antes de alcanzar el hsot destino.
 \end{itemize}
 
 
@@ -30,15 +30,15 @@ En esta oportunidad nos concentraremos en 3 tipos de paquetes ICMP:
 Es una herramienta de diagnóstico utilizada para el diagnostico de redes. También sirve para caracterizar la ruta por la que los paquetes de nivel de red deben pasar antes de alcanzar su destino final. En su versión mas simple, devuelve una lista ordenada de los host pertenecientes al camino, junto con mediciones del RTT para cada host.
 
 Exiten varias maneras de implementar Traceroute, y cual utilizar depende de la tecnologia subyacente disponible. 
-En términos generales, existen dos maneras de implementar traceroute: utilizar los paquetes ICMP ECHO_REQUEST/TIME_EXCEEDED/ECHO_REPLY, y modificar alguno de los protocolo para que provean las características necesarias. 
+En términos generales, existen dos maneras de implementar traceroute: utilizar los paquetes ICMP ECHO\_REQUEST/TIME\_EXCEEDED/ECHO\_REPLY, y modificar alguno de los protocolo para que provean las características necesarias. 
 
-Las primeras consisten en enviar paquetes ICMP ECHO_REQUEST, incrementando progresivamente el campo Time-To-Live (conocido como TTL, que sirve para que un paquete no permanezca en la red de forma indefinida) hasta recibir un paquete ECHO_REPLY del host destino o superar un TTL máximo predefinido. Cuando un host intermedio recibe uno de los paquetes, decrementa el TTL de éste en uno y realiza una de siguientes dos acciones:
+Las primeras consisten en enviar paquetes ICMP ECHO\_REQUEST, incrementando progresivamente el campo Time-To-Live (conocido como TTL, que sirve para que un paquete no permanezca en la red de forma indefinida) hasta recibir un paquete ECHO\_REPLY del host destino o superar un TTL máximo predefinido. Cuando un host intermedio recibe uno de los paquetes, decrementa el TTL de éste en uno y realiza una de siguientes dos acciones:
 \begin{itemize}
 \item{si el TTL resultante es mayor a cero, se continua con el envío del paquete hacia el host destino;}
-\item{si el TTL resultante es igual a cero, se cancela el envío al host destino y se responde un paquete de tipo TIME_EXCEEDED al host inicial}
+\item{si el TTL resultante es igual a cero, se cancela el envío al host destino y se responde un paquete de tipo TIME\_EXCEEDED al host inicial}
  \end{itemize}
 
- De esta manera, el host origen puede ir reconstruyendo la ruta a medida que recibe los paquetes TIME_EXCEEDED. Este mechanismo solo requiere que los host de la red implementen ICMP, pero el hecho de enviar cada paquete por separado puede prestarse a comportamientos anómalos y resultados engañosos.
+ De esta manera, el host origen puede ir reconstruyendo la ruta a medida que recibe los paquetes TIME\_EXCEEDED. Este mechanismo solo requiere que los host de la red implementen ICMP, pero el hecho de enviar cada paquete por separado puede prestarse a comportamientos anómalos y resultados engañosos.
 
 El otro tipo de implementaciones intenta solucionar estos resultados erroneos agregando más capacidades a los protocolos. Si bien esto resulta en métodos más eficientes (pueden requerir enviar menos paquetes) y fiables (pueden definir una ruta concreta), las implementaciones suelen ser más complejas y dependen de que todos los host de la red posean sus stacks de protocolos actualizados (lo que suele ser falso).
 
