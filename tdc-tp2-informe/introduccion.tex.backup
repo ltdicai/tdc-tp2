@@ -3,11 +3,7 @@
 Internet es posible gracias a un conjunto de miles de redes interconectadas entre sí.
 La conexion entre redes de distintos continentes se realiza por medio de cables submarinos capaces de transportar grandes volumenes de datos por segundo.
 En este trabajo experimentaremos con herramientas y técnicas frecuentemente utilizadas para el análisis de redes.
-Utilizaremos el paquete scapy de python para crear y mandar paquetes IP/ICMP. 
-
-A partir de experimentos cuatro universidades ubicadas en diferentes partes del mundo como destino, analizaremos que tan factible resulta utilizar los datos conseguidos mediante traceroute para detectar saltos intercontinentales en las rutas que por las que se envían los paquetes en Internet.  
-
-
+A partir de experimentos cuatro universidades ubicadas en diferentes partes del mundo como destino, analizaremos que tan factible resulta utilizar los datos estadisticos conseguidos mediante traceroute para detectar saltos intercontinentales en las rutas que por las que se envían los paquetes en Internet.  
 
 
 %%Los conceptos teóricos sobre los que basaremos el analisis se presentan a continuación: 
@@ -27,10 +23,9 @@ En esta oportunidad nos concentraremos en 3 tipos de paquetes ICMP:
 
 \subsection{Traceroute}
 
-Es una herramienta de diagnóstico utilizada para el diagnostico de redes. También sirve para caracterizar la ruta por la que los paquetes de nivel de red deben pasar antes de alcanzar su destino final. En su versión mas simple, devuelve una lista ordenada de los host pertenecientes al camino, junto con mediciones del RTT para cada host.
+Es una herramienta de diagnóstico utilizada para caracterizar la ruta por la que los paquetes de nivel de red deben pasar antes de alcanzar su destino final. En su versión mas simple, devuelve una lista ordenada de los host pertenecientes al camino, junto con mediciones del RTT para cada host.
 
-Exiten varias maneras de implementar Traceroute, y cual utilizar depende de la tecnologia subyacente disponible. 
-En términos generales, existen dos maneras de implementar traceroute: utilizar los paquetes ICMP ECHO_REQUEST/TIME_EXCEEDED/ECHO_REPLY, y modificar alguno de los protocolo para que provean las características necesarias. 
+Exiten varias maneras de implementar Traceroute, y cual utilizar depende de la tecnologia subyacente disponible. A grandes rasgos existen dos grupos: las implementaciones que utilizan paquetes ICMP y las que se basan en caracteristicas no estandar de los protocolos. 
 
 Las primeras consisten en enviar paquetes ICMP ECHO_REQUEST, incrementando progresivamente el campo Time-To-Live (conocido como TTL, que sirve para que un paquete no permanezca en la red de forma indefinida) hasta recibir un paquete ECHO_REPLY del host destino o superar un TTL máximo predefinido. Cuando un host intermedio recibe uno de los paquetes, decrementa el TTL de éste en uno y realiza una de siguientes dos acciones:
 \begin{itemize}
