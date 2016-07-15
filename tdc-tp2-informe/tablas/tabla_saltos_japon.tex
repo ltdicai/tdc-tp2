@@ -1,0 +1,29 @@
+\begin{table}[]
+\centering
+\caption{Saltos y sus RTT en el camino desde Buenos Aires a la Universidad de Sudáfrica (África).}
+%\label{Universidad}
+\begin{tabular}{ | c | c | c | c | c | c | }
+	\hline 
+Salto	& 50	& 150	& 300 \\ \hline
+Origen                ->               Destino               	               & Promedio Filtrado &  Promedio Filtrado&	Promedio Filtrado \\ \hline
+( 1) 192.168.0.1     Local           -> ( 6) 200.89.164.129  Argentina    &  	     6.918 ms   &	  [ 18.606 ms]  	 & [  11.22 ms]   \\ \hline
+( 6) 200.89.164.129  Argentina       -> ( 7) 200.89.165.5    Argentina    &  	     0.619 ms   &	     4.529 ms   	 &    0.867 ms    \\ \hline
+( 7) 200.89.165.5    Argentina       -> ( 8) 200.89.165.250  Argentina    &  	  [ 12.215 ms]  &	     3.982 ms   	 &    2.347 ms    \\ \hline
+( 8) 200.89.165.250  Argentina       -> ( 9) 185.70.203.56   Italy        &  	       6.9 ms   &	  [  7.267 ms]  	 &    4.407 ms    \\ \hline
+( 9) 185.70.203.56   Italy           -> (10) 195.22.219.3    Italy        &  	  [ 34.241 ms]  &	  [ 17.178 ms]  	 & [  22.48 ms]   \\ \hline
+(10) 195.22.219.3    Italy           -> (11) 195.22.219.3    Italy        &  	     2.339 ms   &	      4.87 ms   	 &    1.431 ms    \\ \hline
+(11) 195.22.219.3    Italy           -> (12) 149.3.181.65    Italy        &  	  [110.127 ms]  &	  [116.675 ms]  	 & [110.216 ms]   \\ \hline
+(12) 149.3.181.65    Italy           -> (13) 129.250.2.227   United States&  	  [ 42.643 ms]  &	  [ 43.519 ms]  	 & [ 44.393 ms]   \\ \hline
+(13) 129.250.2.227   United States   -> (14) 129.250.4.13    United States&  	  [ 41.497 ms]  &	  [ 49.356 ms]  	 & [ 49.347 ms]   \\ \hline
+(14) 129.250.4.13    United States   -> (15) 129.250.2.54    United States&  	     0.648 ms   &	     2.695 ms   	 &    0.186 ms    \\ \hline
+(15) 129.250.2.54    United States   -> (16) 129.250.3.86    United States&  	  [105.116 ms]  &	  [110.514 ms]  	 & [103.443 ms]   \\ \hline
+(16) 129.250.3.86    United States   -> (17) 129.250.6.188   United States&  	     6.678 ms   &	     2.315 ms   	 &    6.192 ms    \\ \hline
+(17) 129.250.6.188   United States   -> (18) 129.250.2.255   United States&  	     1.769 ms   &	  [ 11.987 ms]  	 &    2.048 ms    \\ \hline
+(18) 129.250.2.255   United States   -> (19) 61.200.80.218   Japan        &  	     1.885 ms   &	     5.458 ms   	 &    6.861 ms    \\ \hline
+(19) 61.200.80.218   Japan           -> (20) 158.205.192.173 Japan        &  	     1.095 ms   &	     3.474 ms   	 &    1.603 ms    \\ \hline
+(20) 158.205.192.173 Japan           -> (21) 158.205.192.86  Japan        &  	  [ 33.664 ms]  &	  [ 25.584 ms]  	 & [  32.85 ms]   \\ \hline
+(21) 158.205.192.86  Japan           -> (22) 158.205.121.250 Japan        &  	  [ 24.304 ms]  &	  [ 14.202 ms]  	 & [ 20.485 ms]   \\ \hline
+(22) 158.205.121.250 Japan           -> (23) 154.34.240.254  Japan        &  	     0.215 ms   &	  [  9.337 ms]  	 & [167.152 ms]   \\ \hline
+(23) 154.34.240.254  Japan           -> (24) 210.152.135.178 Japan        &  	     3.939 ms   &	     1.805 ms   	 & [171.091 ms]   \\ \hline
+\end{tabular}
+\end{table}
