@@ -81,6 +81,7 @@ Experimento & Pais detino& Comando\\ \hline
   3 & Japon& sudo python traceroute.py www.u-tokyo.ac.jp -tr n -p 0.3 -m 30 -o JAP\_n \\ 
   4 & Rusia & sudo python traceroute.py msu.ru -tr n -p 0.3 -m 30 -o RUSIA\_n \\ 
   \hline
+<<<<<<< HEAD
 
 \end{tabular}
 \end{table}
@@ -92,14 +93,108 @@ A continuanción exponemos los resultados obtenidos para los cuatro experimentos
 Para cada uno mostramos 
 
 En las siguientes tablas mostramos los resultados obtenidos para distintos tamaños de ráfagas. Notar que solo estamos utilizando el RTT promedio previamente con outliers eliminados.
+=======
 
-\newpage
+\end{tabular}
+\end{table}
+  Notar que la herramienta debe ejecutarse con permisos de root.
+  
+
+En las siguientes tablas mostramos los resultados obtenidos para distintos tamaños de ráfagas. Notar que solo estamos utilizando el RTT promedio previamente con outliers eliminados.
+
 
 \subsection{Experimento 1: Africa}
 \input{tablas/tabla_camino_africa}
 \begin{landscape}
 \input{tablas/tabla_saltos_africa}
 \end{landscape}
+
+
+\subsection{Experimento 2: EEUU}
+\input{tablas/tabla_camino_eeuu}
+\begin{landscape}
+\input{tablas/tabla_saltos_eeuu}
+\end{landscape}
+
+
+\subsection{Experimento 3: Japon}
+\input{tablas/tabla_camino_japon}
+\begin{landscape}
+\input{tablas/tabla_saltos_japon}
+\end{landscape}
+
+
+\subsection{Experimento 4: Rusia}
+\input{tablas/tabla_camino_rusia}
+\begin{landscape}
+\input{tablas/tabla_saltos_rusia}
+\end{landscape}
+
+
+
+	
+\section{Análisis de resultados}
+
+\section{Experimento 1: Africa}
+\begin{figure}[H]
+  \centering
+  %\includegraphics[scale = 0.8]{imagenes/africaTTL.png}
+  \caption{RTT estimado del traceroute a la Universidad de Sudafrica}
+  \label{africaTTL}
+  \subfigure[RTT promedio por TTL]{\includegraphics[scale = 0.8]{imagenes/africaTTL.png} }
+  \subfigure[RTT relativos entre saltos]{\includegraphics[scale = 0.8]{imagenes/africaRTTrelativos.png}}
+\end{figure}
+
+\section{Experimento 2: Estados Unidos}
+
+\begin{figure}[H]
+  \centering
+  %\includegraphics[scale = 0.8]{imagenes/eeuuTTL.png}
+  \caption{RTT estimado del traceroute a la Universidad de Oregón }
+  \label{eeuuTTL}
+  \subfigure[RTT promedio por TTL]{\includegraphics[scale = 0.8]{imagenes/eeuuTTL.png} }
+  \subfigure[RTT relativos entre saltos]{\includegraphics[scale = 0.8]{imagenes/eeuuRTTrelativos.png}}
+\end{figure}
+
+
+\section{Experimento 3: Japon}
+\begin{figure}[H]
+  \centering
+  %\includegraphics[scale = 0.8]{imagenes/japonTTL.png}
+  \caption{RTT promedio de traceroute a la Universidad de Tokio }
+  \label{japonTTL}
+  \subfigure[RTT promedio por TTL]{\includegraphics[scale = 0.8]{imagenes/japonTTL.png} }
+  \subfigure[RTT relativos entre saltos]{\includegraphics[scale = 0.8]{imagenes/japonRTTrelativos.png}}
+\end{figure}
+
+\section{Experimento 4: Rusia}
+\begin{figure}[H]
+  \centering
+  %\includegraphics[scale = 0.8]{imagenes/rusiaTTL.png}
+  \caption{RTT promedio del traceroute a la Universidad de Moscú}
+  \label{rusiaTTL}
+  \subfigure[RTT promedio por TTL]{\includegraphics[scale = 0.8]{imagenes/japonTTL.png} }
+  \subfigure[RTT relativos entre saltos]{\includegraphics[scale = 0.8]{imagenes/japonRTTrelativos.png}}
+\end{figure}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Segunda consigna: gráficos y análisis}
+>>>>>>> c4516ec1ce91a85a40b1cc4e32e38a9ff2a3dc94
+
+\newpage
+
+<<<<<<< HEAD
+\subsection{Experimento 1: Africa}
+\input{tablas/tabla_camino_africa}
+\begin{landscape}
+\input{tablas/tabla_saltos_africa}
+\end{landscape}
+=======
+
+Realizaremos un análisis que permitará detectar los saltos correspondientes a enlaces intercontinentales. Para esto usaremos 
+>>>>>>> c4516ec1ce91a85a40b1cc4e32e38a9ff2a3dc94
 
 \begin{figure}[H]
   \centering

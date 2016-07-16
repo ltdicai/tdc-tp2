@@ -1,7 +1,7 @@
 \section{Introducción}
 
 Internet es posible gracias a un conjunto de miles de redes interconectadas entre sí.
-La conexion entre redes de distintos continentes se realiza por medio de cables submarinos capaces de transportar grandes volumenes de datos por segundo.
+La conexión entre redes de distintos continentes se realiza por medio de cables submarinos capaces de transportar grandes volúmenes de datos por segundo.
 En este trabajo experimentaremos con herramientas y técnicas frecuentemente utilizadas para el análisis de redes.
 
 A partir de experimentos cuatro universidades ubicadas en diferentes partes del mundo como destino, analizaremos que tan factible resulta utilizar los datos conseguidos mediante traceroute para detectar saltos intercontinentales en las rutas que por las que se envían los paquetes en Internet.  
@@ -20,32 +20,32 @@ En esta oportunidad nos concentraremos en 3 tipos de paquetes ICMP:
 \begin{itemize}
  \item ECHO\_REQUEST (tipo 8): los paquetes ECHO\_REQUEST son utilizados para solicitar a un host que responda con un paquete ICMP ECHO\_REPLY. Esto sirve para saber, por ejemplo, si un host es alcanzable.
  \item ECHO\_REPLY (tipo 0): este tipo de paquete se envía al recibir un paquete ICMP ECHO\_REQUEST.
- \item TIME\_EXCEEDED (tipo 11): indica al host origen que un paquete IP agoto su tiempo de vida (Time-to-live, TTL) y fue descartado antes de alcanzar el hsot destino.
+ \item TIME\_EXCEEDED (tipo 11): indica al host origen que un paquete IP agoto su tiempo de vida (Time-to-live, TTL) y fue descartado antes de alcanzar el host destino.
 \end{itemize}
 
 
 \subsection{Traceroute}
 
-Es una herramienta de diagnóstico utilizada para el diagnostico de redes. También sirve para caracterizar la ruta por la que los paquetes de nivel de red deben pasar antes de alcanzar su destino final. En su versión mas simple, devuelve una lista ordenada de los host pertenecientes al camino, junto con mediciones del RTT para cada host.
+Es una herramienta de diagnóstico utilizada para el diagnóstico de redes. También sirve para caracterizar la ruta por la que los paquetes de nivel de red deben pasar antes de alcanzar su destino final. En su versión más simple, devuelve una lista ordenada de los host pertenecientes al camino, junto con mediciones del RTT para cada host.
 
-Exiten varias maneras de implementar Traceroute, y cual utilizar depende de la tecnologia subyacente disponible. 
-En términos generales, existen dos maneras de implementar traceroute: utilizar los paquetes ICMP ECHO\_REQUEST/TIME\_EXCEEDED/ECHO\_REPLY, y modificar alguno de los protocolo para que provean las características necesarias. 
+Existen varias maneras de implementar Traceroute, y cuál utilizar depende de la tecnología subyacente disponible. 
+En términos generales, existen dos maneras de implementar traceroute: utilizar los paquetes ICMP ECHO\_REQUEST/TIME\_EXCEEDED/ECHO\_REPLY, o modificar alguno de los protocolos para que provean las características necesarias. 
 
 Las primeras consisten en enviar paquetes ICMP ECHO\_REQUEST, incrementando progresivamente el campo Time-To-Live (conocido como TTL, que sirve para que un paquete no permanezca en la red de forma indefinida) hasta recibir un paquete ECHO\_REPLY del host destino o superar un TTL máximo predefinido. Cuando un host intermedio recibe uno de los paquetes, decrementa el TTL de éste en uno y realiza una de siguientes dos acciones:
 \begin{itemize}
-\item{si el TTL resultante es mayor a cero, se continua con el envío del paquete hacia el host destino;}
+\item{si el TTL resultante es mayor a cero, se continúa con el envío del paquete hacia el host destino;}
 \item{si el TTL resultante es igual a cero, se cancela el envío al host destino y se responde un paquete de tipo TIME\_EXCEEDED al host inicial}
  \end{itemize}
 
- De esta manera, el host origen puede ir reconstruyendo la ruta a medida que recibe los paquetes TIME\_EXCEEDED. Este mechanismo solo requiere que los host de la red implementen ICMP, pero el hecho de enviar cada paquete por separado puede prestarse a comportamientos anómalos y resultados engañosos.
+ De esta manera, el host origen puede ir reconstruyendo la ruta a medida que recibe los paquetes TIME\_EXCEEDED. Este mecanismo solo requiere que los hosts de la red implementen ICMP, pero el hecho de enviar cada paquete por separado puede prestarse a comportamientos anómalos y resultados engañosos.
 
-El otro tipo de implementaciones intenta solucionar estos resultados erroneos agregando más capacidades a los protocolos. Si bien esto resulta en métodos más eficientes (pueden requerir enviar menos paquetes) y fiables (pueden definir una ruta concreta), las implementaciones suelen ser más complejas y dependen de que todos los host de la red posean sus stacks de protocolos actualizados (lo que suele ser falso).
+El otro tipo de implementaciones intenta solucionar estos resultados erróneos agregando más capacidades a los protocolos. Si bien esto resulta en métodos más eficientes (pueden requerir enviar menos paquetes) y fiables (pueden definir una ruta concreta), las implementaciones suelen ser más complejas y dependen de que todos los hosts de la red posean sus stacks de protocolos actualizados (lo que suele ser falso).
 
 
 \subsection {Round Trip Time}
 
 El RTT es el tiempo que tarda un paquete en ir y volver desde un nodo A (el origen) a un nodo B (el destino) dentro de una red. 
 Cuando se trata de enlaces punto a punto, se define como 2 * Delay. 
-Si bien a nivel de enlace puede realizarse una estimación relativamente confiable del Delay a partir de variables conocidas (ancho de banda, velocidad de propagación del medio, etc), a nivel de red el RTT de un paquete IP queda sujeto a la ruta que este toma.
+Si bien a nivel de enlace puede realizarse una estimación relativamente confiable del Delay a partir de variables conocidas (ancho de banda, velocidad de propagación del medio, etc), a nivel de red el RTT de un paquete IP queda sujeto a la ruta que éste toma.
 Es decir, el RTT de un paquete que viaja entre varias redes interconectadas depende de variables desconocidadas de los enlace intermedios, y empiezan a cobrar mayor importancia factores como la congestión de los routers intermedios.
 	
