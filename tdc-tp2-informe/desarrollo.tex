@@ -172,7 +172,22 @@ También observamos la ocurrencia de comportamientos anómalos. Por ejemplo, en 
 http://www.net.in.tum.de/fileadmin/TUM/NET/NET-2012-08-1/
 NET-2012-08-1\_02.pdf. 
 
-\subsection{Detección de enlaces intercontinentales}
+\subsection{Detección automática de enlaces intercontinentales}
+
+En primer lugar, encontramos que el algoritmo de detección automática generalmente marcó más enlaces como posibles intercontinentales de lo que esperabamos.
+Analizando las tablas de saltos y sus respectivos gráficos, 
+notamos que muchas veces se marcan como outlier variaciones que resultan poco significativas en comparacón con los valores más altos. Aunque Cimbala considera que estos valores se alejan de lo esperado, parecen deberse más a factores como encolamiento o procesamiento en los hots que a enlaces de larga distancia. 
+Este comportamiento se observó en todos los experimentos. 
+Por ejemplo, en la ruta a Sudáfrica, entre los hops 12 y 20 se marcaron hasta 5 posibles saltos intercontinentales,
+pero todos pertenecen a una misma red y se encuentran, según la base de datos de geolocalizacion, dentro de Estados Unidos.
+
+
+También observamos que el tamaño de las ráfagas hace variar mucho los RTTs, y por ende, los outliers encontrados. 
+Esto lo podemos ver en las tablas de saltos entre hops, donde para distintos tamaños de rafaga para un mismo salto a veces se considera outlier y otras veces no. Por ejemplo, para el experimiento de Tokio, el RTT entre los hops 7 y 8 varía entre 2 y 12 ms, y uno se marca como outlier mientras que el otro no.
+
+Por último, notamos que si bien existen enlaces intercontinentales que rondan los valores que esperabamos encontrar (alrededor de 100ms), existen varios con valores mucho menores que el algoritmo no está preparado para detectar. Es el caso, por ejemplo, del enlace entre Estados Unidos e Inglaterra (hops 13 a 14 en el experimento a Rusia) o aquel entre Estados Unidos y Japón (hops 18 a 19 del experimento a Japón).
+
+
 
 
 \section{Conclusiones}
@@ -184,5 +199,7 @@ NET-2012-08-1\_02.pdf.
 	Queda probar considerar los saltos entre subredes, en lugar de entre hops.
 	El servicio de geolocalizacion puede ser erroneo.
 	
+    Creemos que el metodo de Cimbala es demasiado sensible
+Suponemos que si los datos fueran más estables, el método de Cimbala podria ser más efectivo
 
 Más tamaño de ráfaga tambien es mas riesgoso, porque hay mas chances de que varios paquetes sigan caminos distintos, haya mas varianza y el prefiltrado no funcione.

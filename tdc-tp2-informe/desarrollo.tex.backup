@@ -38,15 +38,15 @@ El código se divide en tres funciones principales
 \begin{itemize}
 	\item{\texttt{rastrear()}: es la implementacion del algoritmo de traceroute utilizando paquetes ICMP. Devuelve un muestreo de RTTs por TTL.}
 	\item{\texttt{generar\_camino()}: a partir del muestreo devuelto por 'rastrear', decide cual es el camino más probable y calcula los RTT correspondientes a cada hop.}
-	\item{\texttt{detectar\_enlaces\_intercontinentales()}: dato un camino devuelto por \texttt{generar\_camino()}, calcula los RTT entre hops y marca aquellos que pueden ser saltos intercontinentales mediante la detección de outlier según el algoritmo de Cimbala.}
+	\item{\texttt{detectar\_enlaces\_intercontinentales()}: dado un camino devuelto por \texttt{generar\_camino()}, calcula los RTT entre hops y marca aquellos que pueden ser saltos intercontinentales mediante la detección de outlier según el algoritmo de Cimbala.}
 \end{itemize}	
 
-Para el mapeo de IP a País utilizamos una base de datos obtenida de \href{http://www.maxmind.com}{MaxMind} actualizada al 09/07/2016, accedida en el código por medio del paquete \texttt{geoip2} de Python. Descartamos otras fuentes de datos que debido a que presentaban limitaciones de performance, no proveían una API o se encontraban desactualizadas. 
+Para el mapeo de IP a País utilizamos una base de datos obtenida de \href{http://www.maxmind.com}{MaxMind} actualizada al 09/07/2016, accedida en el código por medio del paquete \texttt{geoip2} de Python. Descartamos otras fuentes de datos que, debido a que presentaban limitaciones de performance, no proveían una API o se encontraban desactualizadas. 
 
 
 \section{Experimentos}
 A fin de probar el comportamiento del algoritmo propuesto, recolectamos los resultados de ejecutar el programa tomando como destinos a cuatro universidades en distintos continentes. Realizamos 3 corridas para cada destino, variando el tamaño de la ráfaga en 50, 150 y 300 paquetes.
-Las destinos elegidos fueron:
+Los destinos elegidos fueron:
 
 \begin{center}
    \begin{tabular}{ | c | c | c | c | }
@@ -88,7 +88,11 @@ Exp & Destino & Comando\\ \hline
   
 \section{Resultados}
 
-En las siguientes tablas mostramos los resultados obtenidos para distintos tamaños de ráfagas. Notar que solo estamos utilizando el RTT promedio con los outliers previamente eliminados.
+En las siguientes tablas mostramos los resultados obtenidos para distintos tamaños de ráfagas. 
+Notar que solo estamos utilizando el RTT promedio, al que calculamos eliminando previamente los outliers. 
+En las tablas de saltos se marcan entre corchetes los outliers según Cimbala.
+
+
 
 \newpage
 \section{Experimento 1: África}
@@ -160,16 +164,38 @@ En las siguientes tablas mostramos los resultados obtenidos para distintos tama�
 
 \section{Análisis de los resultados}
 
-Si bien todos los tamaños de ráfagas devuelven caminos con igual cantidad de hops, a veces algunos host no llegan a responder. Por ejemplo, el host con IP 4.68.72.66 (hop 11 tanto del camino a EEUU como a Rusia) parece no poder detectarse a menos que la ráfaga sea grande. Suponemos que el umbral de timeout que estamos utilizamos puede ser demasiado bajo, por lo que no se alcanaza a recibir una respuesta del host. Ahora, puede ser que el motivo por el cual este host no responda y sucedan timeouts suficientes como para descartar el hop sea que se están siguiendo caminos alternativos que no pasan por él, sino por otro nodo que no honra los paquetes ECHO\_REQUEST. 
+\subsection {Traceroute}
+Si bien todos los tamaños de ráfagas devuelven caminos con igual cantidad de hops, a veces algunos host no llegan a responder. Por ejemplo, el host con IP 4.68.72.66 (hop 11 tanto del camino a EEUU como a Rusia) parece no poder detectarse a menos que la ráfaga sea grande. Suponemos que el umbral de timeout que estamos utilizamos puede ser demasiado bajo, por lo que no se alcanaza a recibir una respuesta del host. Ahora, puede ser que el motivo por el cual este host no responda y sucedan timeouts suficientes como para descartar el hop sea que se están siguiendo caminos alternativos que no pasan por él, sino por otro nodo que ignora los paquetes ECHO\_REQUEST. 
 
-Tambien observamos la ocurrencia de comportamientos anómalos. Por ejemplo, en el camino a Rusia podemos ver que los hops 12 y 13 corresponden a la misma IP. Esto puede deberse a que se atraviesa una ruta MPLS que delega en ese host la tarea de enviar los mensajes TIME_EXCEEDED, o a que se toman caminos alternativos  que terminan en ese mismo host para ambos TTLs. Dado que los RTT son muy similares para ambos hops, creemos que la primera explicación es mucho más probable.
+También observamos la ocurrencia de comportamientos anómalos. Por ejemplo, en el camino a Rusia podemos ver que los hops 12 y 13 corresponden a la misma IP. Esto puede deberse a que se atraviesa una ruta MPLS que delega en ese host la tarea de enviar los mensajes TIME\_EXCEEDED, o a que se toman caminos alternativos  que terminan en ese mismo host para ambos TTLs. Dado que los RTT son muy similares para ambos hops, creemos que la primera explicación es mucho más probable.
 
 http://www.net.in.tum.de/fileadmin/TUM/NET/NET-2012-08-1/
 NET-2012-08-1\_02.pdf. 
 
+\subsection{Detección automática de enlaces intercontinentales}
+
+En primer lugar, encontramos que el algoritmo de detección automática generalmente marcó mas enlaces como posibles enlaces intercontinentales de lo que esperabamos.
+Analizando las tablas de saltos y sus respectivos gráficos, 
+notamos que muchas veces se marcan como outlier variaciones que resultan poco significativas ya que
+pueden deberse a factores como encolamiento o procesamiento en los hots. 
+Este comportamiento se observó en todos los experimentos. 
+Por ejemplo, en la ruta a Sudáfrica, entre los hops 12 y 20 se marcaron hasta 5 posibles saltos intercontinentales,
+pero todos pertenecen a una misma red y se encuentran, según la base de datos de geolocalizacion, dentro de Estados Unidos.
 
 
-Existen saltos 
+Tambien observamos que el tamaño de las ráfagas hace variar mucho los RTTs, y por ende, los outliers encontrados. 
+Esto lo podemos ver en las tablas de saltos entre hops, donde para distintos tamaños de rafaga para un mismo salto a veces se considera outlier y otras veces no. Por ejemplo, para el experimiento de Tokio, el RTT entre los hops 7 y 8, varia entre 2 y 12 ms, y se marca uno como outlier uno mientras que el otro no.
+
+
+
+distintos tamaños de rafagas hacen variar los outliers encontrados por cimbala
+
+vemos que genearlmente se encuentra mas outliers que los que esperabamos.
+
+hay enlaces intercontinentales que son mucho mas rapido de lo que esperabamos (y cimbala no los detecta)
+
+
+
 
 
 \section{Conclusiones}
@@ -181,5 +207,7 @@ Existen saltos
 	Queda probar considerar los saltos entre subredes, en lugar de entre hops.
 	El servicio de geolocalizacion puede ser erroneo.
 	
+    Creemos que el metodo de Cimbala es demasiado sensible
+Suponemos que si los datos fueran más estables, el método de Cimbala podria ser más efectivo
 
 Más tamaño de ráfaga tambien es mas riesgoso, porque hay mas chances de que varios paquetes sigan caminos distintos, haya mas varianza y el prefiltrado no funcione.

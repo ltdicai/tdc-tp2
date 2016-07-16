@@ -82,7 +82,7 @@ Las destinos elegidos fueron:
 
 	Mapa de las universidades
 
-	Los experimentos se realizaron sobre en una computadora conectada a internet (proveedor Fibertel) por medio de un enlace WiFi. Se utilizaron los siguientes comandos 	
+	Los experimentos se realizaron sobre en una computadora conectada a internet (proveedor Fibertel) por medio de un enlace WiFi. Se utilizaron los siguientes comandos 		
 
 		EEUU: sudo python traceroute.py www.cs.uoregon.edu   -tr n -p 0.3 -m 30 -o EEUU_OREGON_n
 		JAPON: sudo python traceroute.py www.u-tokyo.ac.jp   -tr n -p 0.3 -m 30 -o JAP_n
