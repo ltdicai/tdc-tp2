@@ -163,13 +163,9 @@ Notar que solo estamos utilizando el RTT promedio, eliminando previamente los ou
 
 \section{Análisis de los resultados}
 
-Si bien todos los tamaños de ráfagas devuelven caminos con igual cantidad de hops, a veces algunos host no llegan a responder. Por ejemplo, el host con IP 4.68.72.66 (hop 11 tanto del camino a EEUU como a Rusia) no parece detectarse a menos que la ráfaga sea grande. Suponemos que el umbral de timeout que utilizamos puede ser demasiado bajo, o que este . 
+Si bien todos los tamaños de ráfagas devuelven caminos con igual cantidad de hops, a veces algunos host no llegan a responder. Por ejemplo, el host con IP 4.68.72.66 (hop 11 tanto del camino a EEUU como a Rusia) no parece detectarse a menos que la ráfaga sea grande. Suponemos que el umbral de timeout que estamos utilizamos puede ser demasiado bajo, por lo que no se alcanaza a recibir una respuesta del host. Ahora, puede ser que el motivo por el cual este host no responda y sucedan timeouts suficientes como para descartar el hop sea que se están siguiendo caminos alternativos que no pasan por este host, sino por otro que no honra los paquetes ECHO\_REQUEST. 
 
-Como podemos observar en los gráficos de RTT, aumentar el tamaño de la ráfaga no parece haber afectado la generación del camino. Si notamos que existen nodos que 
-
-
-
-Mas tamaño de rafaga tambien es mas riesgoso, porque hay mas chances de que varios paquetes sigan caminos distintos, haya mas varianza y el prefiltrado no funcione.
+Tambien observamos la ocurrencia de comportamientos anómalos. Por ejemplo, en el camino a Rusia podemos ver que los hops 12 y 13 corresponden a la misma IP. Esto puede deberse a que se atraviesa una ruta MPLS que delega en ese host la tarea de enviar los mensajes TIME_EXCEEDED, o a que se toman caminos alternativos que que terminan en ese mismo host para ambos TTLs. Dado que los RTT son muy similares para ambos hops, creemos que la primera explicación es mucho más probable.
 
 Suceden comporatamientos anomalos, como dos hops con la misma IP. Esto puede deberse a alguno de los motivos descriptos por http://www.net.in.tum.de/fileadmin/TUM/NET/NET-2012-08-1/
 NET-2012-08-1\_02.pdf. Por ejemplo, 
@@ -186,3 +182,5 @@ Existen saltos
 	Queda probar considerar los saltos entre subredes, en lugar de entre hops.
 	El servicio de geolocalizacion puede ser erroneo.
 	
+
+Más tamaño de ráfaga tambien es mas riesgoso, porque hay mas chances de que varios paquetes sigan caminos distintos, haya mas varianza y el prefiltrado no funcione.
