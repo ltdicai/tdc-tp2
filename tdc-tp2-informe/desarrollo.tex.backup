@@ -86,124 +86,84 @@ Experimento & Pais detino& Comando\\ \hline
 \end{table}
   Notar que la herramienta debe ejecutarse con permisos de root.
   
+\section{Resultados}
+
+A continuanción exponemos los resultados obtenidos para los cuatro experimentos. 
+Para cada uno mostramos 
 
 En las siguientes tablas mostramos los resultados obtenidos para distintos tamaños de ráfagas. Notar que solo estamos utilizando el RTT promedio previamente con outliers eliminados.
 
-\centering
+\newpage
 
-\section{Experimento 1: Africa}
+\subsection{Experimento 1: Africa}
 \input{tablas/tabla_camino_africa}
+\begin{landscape}
 \input{tablas/tabla_saltos_africa}
+\end{landscape}
 
-
-\section{Experimento 2: EEUU}
-\input{tablas/tabla_camino_eeuu}
-\input{tablas/tabla_saltos_eeuu}
-
-
-\section{Experimento 3: Japon}
-\input{tablas/tabla_camino_japon}
-\input{tablas/tabla_saltos_japon}
-
-
-\section{Experimento 4: Rusia}
-\input{tablas/tabla_camino_rusia}
-\input{tablas/tabla_saltos_rusia}
-
-
-	
-\section{Análisis de resultados}
-
-\section{Experimento 1: Africa}
 \begin{figure}[H]
   \centering
   %\includegraphics[scale = 0.8]{imagenes/africaTTL.png}
   \caption{RTT estimado del traceroute a la Universidad de Sudafrica}
   \label{africaTTL}
-  \subfigure[RTT promedio por TTL]{\includegraphics[scale = 0.8]{imagenes/africaTTL.png} }
-  \subfigure[RTT relativos entre saltos]{\includegraphics[scale = 0.8]{imagenes/africaRTTrelativos.png}}
+  \subfigure[RTT promedio por TTL]{\includegraphics[scale = 1]{imagenes/africaTTL.png} }
+  \subfigure[RTT relativos entre saltos]{\includegraphics[scale = 1]{imagenes/africaRTTrelativos.png}}
 \end{figure}
 
-\section{Experimento 2: Estados Unidos}
+\newpage
+\subsection{Experimento 2: EEUU}
+\input{tablas/tabla_camino_eeuu}
+\begin{landscape}
+\input{tablas/tabla_saltos_eeuu}
+\end{landscape}
 
 \begin{figure}[H]
   \centering
   %\includegraphics[scale = 0.8]{imagenes/eeuuTTL.png}
   \caption{RTT estimado del traceroute a la Universidad de Oregón }
   \label{eeuuTTL}
-  \subfigure[RTT promedio por TTL]{\includegraphics[scale = 0.8]{imagenes/eeuuTTL.png} }
-  \subfigure[RTT relativos entre saltos]{\includegraphics[scale = 0.8]{imagenes/eeuuRTTrelativos.png}}
+  \subfigure[RTT promedio por TTL]{\includegraphics[scale = 1]{imagenes/eeuuTTL.png} }
+  \subfigure[RTT relativos entre saltos]{\includegraphics[scale = 1]{imagenes/eeuuRTTrelativos.png}}
 \end{figure}
 
 
-\section{Experimento 3: Japon}
+\newpage
+\subsection{Experimento 3: Japon}
+\input{tablas/tabla_camino_japon}
+\begin{landscape}
+  \input{tablas/tabla_saltos_japon}
+\end{landscape}
+
 \begin{figure}[H]
   \centering
   %\includegraphics[scale = 0.8]{imagenes/japonTTL.png}
   \caption{RTT promedio de traceroute a la Universidad de Tokio }
   \label{japonTTL}
-  \subfigure[RTT promedio por TTL]{\includegraphics[scale = 0.8]{imagenes/japonTTL.png} }
-  \subfigure[RTT relativos entre saltos]{\includegraphics[scale = 0.8]{imagenes/japonRTTrelativos.png}}
+  \subfigure[RTT promedio por TTL]{\includegraphics[scale = 1]{imagenes/japonTTL.png} }
+  \subfigure[RTT relativos entre saltos]{\includegraphics[scale = 1]{imagenes/japonRTTrelativos.png}}
 \end{figure}
 
-\section{Experimento 4: Rusia}
+
+\newpage
+\subsection{Experimento 4: Rusia}
+\input{tablas/tabla_camino_rusia}
+\begin{landscape}
+\input{tablas/tabla_saltos_rusia}
+\end{landscape}
+
 \begin{figure}[H]
   \centering
   %\includegraphics[scale = 0.8]{imagenes/rusiaTTL.png}
   \caption{RTT promedio del traceroute a la Universidad de Moscú}
   \label{rusiaTTL}
-  \subfigure[RTT promedio por TTL]{\includegraphics[scale = 0.8]{imagenes/japonTTL.png} }
-  \subfigure[RTT relativos entre saltos]{\includegraphics[scale = 0.8]{imagenes/japonRTTrelativos.png}}
+  \subfigure[RTT promedio por TTL]{\includegraphics[scale = 1]{imagenes/japonTTL.png} }
+  \subfigure[RTT relativos entre saltos]{\includegraphics[scale = 1]{imagenes/japonRTTrelativos.png}}
 \end{figure}
 
 
+\section{Análisis de los resultados}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Segunda consigna: gráficos y análisis}
-
-
-
-Realizaremos un análisis que permitará detectar los saltos correspondientes a enlaces intercontinentales. Para esto usaremos 
-
-Para obtener los datos de los experimentos, consideramos lo siguiente:
-Para calcular el RTT para un determinado Hop(salto) utilizamos un promedio de las muestras particulares para cada universidad.
-Para usar el metodo de calculo de outlier, tomamos como hipotesis que los RTT relativos (entre hops) cuanto mas grande sean, mayor es la posibilidad de ser un salto intercontinental. Partiendo de esta base, llamamos al metodo de cimbala con el set de datos de RTT relativos.
-
-\subsubsection{Experimentos}
-\textbf{The university of tokio} \\
-
-\textbf{Ruta de IPs:} \{ [192.168.10.1]; [200.89.160.17]; [200.89.165.222];
- [195.22.220.64]; [195.22.219.17]; [195.22.219.17]; [149.3.181.65]; [129.250.2.227]
- [129.250.4.13]; [129.250.2.54]; [129.250.3.86]; [129.250.6.188]; [129.250.2.255];
- [61.200.80.218]; [158.205.192.173]; [158.205.192.86]; [158.205.121.250];
- [154.34.240.254]; [210.152.135.178]\}
-
-En el primer gráfico mostramos como incrementa el RTT a medida que se van enviando los paquetes con un TTL determinado. Se puede ver que cuando enviamos los paquetes con TTLs 2,3, y 4 no obtenemos respuesta, suponemos que hay servidores a dicha distancia no estan configurados para responder paquetes ICMP de tipo Echo Request,o que se perdieron en la red. Tambien, como habiamos dicho antes, suponemos que los saltos de incremento del RTT se debe a una conexión intercontinetal, asi que podemos asumir que hay posible conexiones ente los Hops 1-2, 9-10, 13-14 y 15-16.
-Para comprobar esta hipotesis, tomamos el RTT relativo entre Hops y se los pasamos al metodo de cimbala y nos da como resultado que los posibles candidatos son:
-(9, 5, 7, 11)
+Como podemos observar fácilmente en los gráficos de RTT de llos cuatro experimento, la variación del tamaño de la rafaga (al menos en los valores manejados) no resulto tener gran influencia 
 
 
-\begin{center}
-   \begin{tabular}{ |l | c | r | }
-     \hline
-     \textbf{Origen} & \textbf{Destino} & \textbf{RRT relativo (ms)} \\ \hline
-     Home & Argentina & 20.868 \\ \hline
-     Argentina & Argentina & 0.162 \\ \hline
-     Argentina & Italy & 3.043 \\ \hline
-     Italy & Italy & 30.260 \\ \hline
-     Italy & Italy & 8.189 \\ \hline
-     Italy & Italy & 109.476\\ \hline
-     Italy & United States & 1.993\\ \hline
-     United States & United States & 52.135 \\ \hline
-     United States & United States & 0.485\\ \hline
-     United States & United States & 111.830\\ \hline
-     United States & United States & 1.617 \\ \hline
-     United States & United States & 48.441 \\ \hline
-     United States & Japan & 32.720 \\ \hline
-     Japan & Japan & 10.492 \\ \hline
-     Japan & Japan & 4.534 \\ \hline
-     Japan & Japan & 26.721 \\ \hline
-     Japan & Japan & 7.028 \\ \hline
-     Japan & Japan & 19.043 \\ \hline
-   \end{tabular}
- \end{center}
+\section{Conclusiones}
