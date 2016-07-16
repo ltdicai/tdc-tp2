@@ -38,15 +38,15 @@ El código se divide en tres funciones principales
 \begin{itemize}
 	\item{\texttt{rastrear()}: es la implementacion del algoritmo de traceroute utilizando paquetes ICMP. Devuelve un muestreo de RTTs por TTL.}
 	\item{\texttt{generar\_camino()}: a partir del muestreo devuelto por 'rastrear', decide cual es el camino más probable y calcula los RTT correspondientes a cada hop.}
-	\item{\texttt{detectar\_enlaces\_intercontinentales()}: dato un camino devuelto por \texttt{generar\_camino()}, calcula los RTT entre hops y marca aquellos que pueden ser saltos intercontinentales mediante la detección de outlier según el algoritmo de Cimbala.}
+	\item{\texttt{detectar\_enlaces\_intercontinentales()}: dado un camino devuelto por \texttt{generar\_camino()}, calcula los RTT entre hops y marca aquellos que pueden ser saltos intercontinentales mediante la detección de outlier según el algoritmo de Cimbala.}
 \end{itemize}	
 
-Para el mapeo de IP a País utilizamos una base de datos obtenida de \href{http://www.maxmind.com}{MaxMind} actualizada al 09/07/2016, accedida en el código por medio del paquete \texttt{geoip2} de Python. Descartamos otras fuentes de datos que debido a que presentaban limitaciones de performance, no proveían una API o se encontraban desactualizadas. 
+Para el mapeo de IP a País utilizamos una base de datos obtenida de \href{http://www.maxmind.com}{MaxMind} actualizada al 09/07/2016, accedida en el código por medio del paquete \texttt{geoip2} de Python. Descartamos otras fuentes de datos que, debido a que presentaban limitaciones de performance, no proveían una API o se encontraban desactualizadas. 
 
 
 \section{Experimentos}
 A fin de probar el comportamiento del algoritmo propuesto, recolectamos los resultados de ejecutar el programa tomando como destinos a cuatro universidades en distintos continentes. Realizamos 3 corridas para cada destino, variando el tamaño de la ráfaga en 50, 150 y 300 paquetes.
-Las destinos elegidos fueron:
+Los destinos elegidos fueron:
 
 \begin{center}
    \begin{tabular}{ | c | c | c | c | }
@@ -89,9 +89,9 @@ Exp & Destino & Comando\\ \hline
 \section{Resultados}
 
 A continuanción exponemos los resultados obtenidos para los cuatro experimentos. 
-Para cada uno mostramos 
 
-En las siguientes tablas mostramos los resultados obtenidos para distintos tamaños de ráfagas. Notar que solo estamos utilizando el RTT promedio previamente con outliers eliminados.
+En las siguientes tablas mostramos los resultados obtenidos para distintos tamaños de ráfagas. 
+Notar que solo estamos utilizando el RTT promedio, eliminando previamente los outliers.
 
 \newpage
 \section{Experimento 1: África}
