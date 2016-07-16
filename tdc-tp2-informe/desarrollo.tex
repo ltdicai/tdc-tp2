@@ -38,15 +38,15 @@ El código se divide en tres funciones principales
 \begin{itemize}
 	\item{\texttt{rastrear()}: es la implementacion del algoritmo de traceroute utilizando paquetes ICMP. Devuelve un muestreo de RTTs por TTL.}
 	\item{\texttt{generar\_camino()}: a partir del muestreo devuelto por 'rastrear', decide cual es el camino más probable y calcula los RTT correspondientes a cada hop.}
-	\item{\texttt{detectar\_enlaces\_intercontinentales()}: dato un camino devuelto por \texttt{generar\_camino()}, calcula los RTT entre hops y marca aquellos que pueden ser saltos intercontinentales mediante la detección de outlier según el algoritmo de Cimbala.}
+	\item{\texttt{detectar\_enlaces\_intercontinentales()}: dado un camino devuelto por \texttt{generar\_camino()}, calcula los RTT entre hops y marca aquellos que pueden ser saltos intercontinentales mediante la detección de outlier según el algoritmo de Cimbala.}
 \end{itemize}	
 
-Para el mapeo de IP a País utilizamos una base de datos obtenida de \href{http://www.maxmind.com}{MaxMind} actualizada al 09/07/2016, accedida en el código por medio del paquete \texttt{geoip2} de Python. Descartamos otras fuentes de datos que debido a que presentaban limitaciones de performance, no proveían una API o se encontraban desactualizadas. 
+Para el mapeo de IP a País utilizamos una base de datos obtenida de \href{http://www.maxmind.com}{MaxMind} actualizada al 09/07/2016, accedida en el código por medio del paquete \texttt{geoip2} de Python. Descartamos otras fuentes de datos que, debido a que presentaban limitaciones de performance, no proveían una API o se encontraban desactualizadas. 
 
 
 \section{Experimentos}
 A fin de probar el comportamiento del algoritmo propuesto, recolectamos los resultados de ejecutar el programa tomando como destinos a cuatro universidades en distintos continentes. Realizamos 3 corridas para cada destino, variando el tamaño de la ráfaga en 50, 150 y 300 paquetes.
-Las destinos elegidos fueron:
+Los destinos elegidos fueron:
 
 \begin{center}
    \begin{tabular}{ | c | c | c | c | }
@@ -88,7 +88,14 @@ Exp & Destino & Comando\\ \hline
   
 \section{Resultados}
 
+<<<<<<< HEAD
 En las siguientes tablas mostramos los resultados obtenidos para distintos tamaños de ráfagas. Notar que solo estamos utilizando el RTT promedio con los outliers previamente eliminados.
+=======
+Exponemos los resultados obtenidos para los cuatro experimentos. A continuacion de los graficos comentaremos nuestro análisis.
+
+En las siguientes tablas mostramos los resultados obtenidos para distintos tamaños de ráfagas. 
+Notar que solo estamos utilizando el RTT promedio, al que calculamos eliminando previamente los outliers.
+>>>>>>> eb643e9c65ac7f01362ac089d8b67ee2269f34bf
 
 \newpage
 \section{Experimento 1: África}
@@ -160,7 +167,6 @@ En las siguientes tablas mostramos los resultados obtenidos para distintos tama�
 
 \section{Análisis de los resultados}
 
-
 Si bien todos los tamaños de ráfagas devuelven caminos con igual cantidad de hops, a veces algunos host no llegan a responder. Por ejemplo, el host con IP 4.68.72.66 (hop 11 tanto del camino a EEUU como a Rusia) parece no poder detectarse a menos que la ráfaga sea grande. Suponemos que el umbral de timeout que estamos utilizamos puede ser demasiado bajo, por lo que no se alcanaza a recibir una respuesta del host. Ahora, puede ser que el motivo por el cual este host no responda y sucedan timeouts suficientes como para descartar el hop sea que se están siguiendo caminos alternativos que no pasan por él, sino por otro nodo que ignora los paquetes ECHO\_REQUEST. 
 
 También observamos la ocurrencia de comportamientos anómalos. Por ejemplo, en el camino a Rusia podemos ver que los hops 12 y 13 corresponden a la misma IP. Esto puede deberse a que se atraviesa una ruta MPLS que delega en ese host la tarea de enviar los mensajes TIME_EXCEEDED, o a que se toman caminos alternativos  que terminan en ese mismo host para ambos TTLs. Dado que los RTT son muy similares para ambos hops, creemos que la primera explicación es mucho más probable.
@@ -168,9 +174,6 @@ También observamos la ocurrencia de comportamientos anómalos. Por ejemplo, en 
 http://www.net.in.tum.de/fileadmin/TUM/NET/NET-2012-08-1/
 NET-2012-08-1\_02.pdf. 
 
-
-
-Existen saltos 
 
 
 \section{Conclusiones}
