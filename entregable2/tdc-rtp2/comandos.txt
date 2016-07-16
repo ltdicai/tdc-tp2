@@ -1,0 +1,11 @@
+
+sudo python traceroute_5.py www.unisa.ac.za -tr 300 -o AFR_20160713_2100_300
+sudo python traceroute_5.py www.cs.uoregon.edu -tr 300 -o EEUU_OREGON_20160713_2100_300
+sudo python traceroute_5.py msu.ru -tr 300 -o RUSIA_20160713_2100_300
+sudo python traceroute_5.py www.u-tokyo.ac.jp -tr 300 -o JAP_20160713_2100_300
+
+
+sudo python traceroute_5.py wsu.edu -tr 300 -o EEUU_1_20160713_2100_300
+sudo python traceroute_5.py www.ox.ac.uk -tr 300 -o ENG_20160713_2100_300
+sudo python traceroute_5.py www.sydney.edu.au -tr 300 -o AUSTRALIA_20160713_2100_300
+
