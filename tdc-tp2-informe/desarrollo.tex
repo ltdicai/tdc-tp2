@@ -163,9 +163,7 @@ En las siguientes tablas mostramos los resultados obtenidos para distintos tama�
 
 \section{Análisis de los resultados}
 
-Si bien todos los tamaños de ráfagas devuelven caminos con igual cantidad de hops, a veces algunos host no llegan a responder. Por ejemplo, el host con IP 4.68.72.66 (hop 11 tanto del camino a EEUU como a Rusia) no parece detectarse a menos que la ráfaga sea grande. Suponemos que el umbral de timeout que utilizamos puede ser demasiado bajo, o que este . 
-
-Como podemos observar en los gráficos de RTT, aumentar el tamaño de la ráfaga no parece haber afectado la generación del camino. Si notamos que existen nodos que 
+Si bien todos los tamaños de ráfagas devuelven caminos con igual cantidad de hops, a veces algunos host no llegan a responder. Por ejemplo, el host con IP 4.68.72.66 (hop 11 tanto del camino a EEUU como a Rusia) no parece detectarse a menos que la ráfaga sea grande. Suponemos que el umbral de timeout que estamos utilizamos puede ser demasiado bajo, por lo que no se alcanaza a recibir una respuesta del host. Ahora, puede ser que el motivo por el cual este host no responda y sucedan timeouts suficientes como para descartar el hop sea que se están siguiendo caminos alternativos que no pasan por este host, sino por otro que no honra los paquetes ECHO\_REQUEST. 
 
 
 
