@@ -88,10 +88,10 @@ Exp & Destino & Comando\\ \hline
   
 \section{Resultados}
 
-A continuación exponemos los resultados obtenidos para los cuatro experimentos. 
+Exponemos los resultados obtenidos para los cuatro experimentos. A continuacion de los graficos comentaremos nuestro análisis.
 
 En las siguientes tablas mostramos los resultados obtenidos para distintos tamaños de ráfagas. 
-Notar que solo estamos utilizando el RTT promedio, eliminando previamente los outliers.
+Notar que solo estamos utilizando el RTT promedio, al que calculamos eliminando previamente los outliers.
 
 \newpage
 \section{Experimento 1: África}
@@ -163,7 +163,7 @@ Notar que solo estamos utilizando el RTT promedio, eliminando previamente los ou
 
 \section{Análisis de los resultados}
 
-Si bien todos los tamaños de ráfagas devuelven caminos con igual cantidad de hops, a veces algunos host no llegan a responder. Por ejemplo, el host con IP 4.68.72.66 (hop 11 tanto del camino a EEUU como a Rusia) no parece detectarse a menos que la ráfaga sea grande. Suponemos que el umbral de timeout que estamos utilizamos puede ser demasiado bajo, por lo que no se alcanaza a recibir una respuesta del host. Ahora, puede ser que el motivo por el cual este host no responda y sucedan timeouts suficientes como para descartar el hop sea que se están siguiendo caminos alternativos que no pasan por este host, sino por otro que no honra los paquetes ECHO\_REQUEST. 
+Si bien todos los tamaños de ráfagas devuelven caminos con igual cantidad de hops, a veces algunos host no llegan a responder. Por ejemplo, el host con IP 4.68.72.66 (hop 11 tanto del camino a EEUU como a Rusia) no parece detectarse a menos que la ráfaga sea grande. Suponemos que el umbral de timeout que estamos utlizando es demasiado bajo, por lo que no alcanzariamos a recibir una respuesta del host. Ahora, puede ser que el motivo por el cual este host no responda y sucedan timeouts suficientes como para descartar el hop sea que se están siguiendo caminos alternativos que no pasan por este host, sino por otro que no honra los paquetes ECHO\_REQUEST. 
 
 Tambien observamos la ocurrencia de comportamientos anómalos. Por ejemplo, en el camino a Rusia podemos ver que los hops 12 y 13 corresponden a la misma IP. Esto puede deberse a que se atraviesa una ruta MPLS que delega en ese host la tarea de enviar los mensajes TIME_EXCEEDED, o a que se toman caminos alternativos que que terminan en ese mismo host para ambos TTLs. Dado que los RTT son muy similares para ambos hops, creemos que la primera explicación es mucho más probable.
 
