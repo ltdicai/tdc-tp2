@@ -88,14 +88,8 @@ Exp & Destino & Comando\\ \hline
   
 \section{Resultados}
 
-<<<<<<< HEAD
-En las siguientes tablas mostramos los resultados obtenidos para distintos tamaños de ráfagas. Notar que solo estamos utilizando el RTT promedio con los outliers previamente eliminados.
-=======
-Exponemos los resultados obtenidos para los cuatro experimentos. A continuacion de los graficos comentaremos nuestro análisis.
-
 En las siguientes tablas mostramos los resultados obtenidos para distintos tamaños de ráfagas. 
 Notar que solo estamos utilizando el RTT promedio, al que calculamos eliminando previamente los outliers.
->>>>>>> eb643e9c65ac7f01362ac089d8b67ee2269f34bf
 
 \newpage
 \section{Experimento 1: África}
@@ -169,7 +163,7 @@ Notar que solo estamos utilizando el RTT promedio, al que calculamos eliminando 
 
 Si bien todos los tamaños de ráfagas devuelven caminos con igual cantidad de hops, a veces algunos host no llegan a responder. Por ejemplo, el host con IP 4.68.72.66 (hop 11 tanto del camino a EEUU como a Rusia) parece no poder detectarse a menos que la ráfaga sea grande. Suponemos que el umbral de timeout que estamos utilizamos puede ser demasiado bajo, por lo que no se alcanaza a recibir una respuesta del host. Ahora, puede ser que el motivo por el cual este host no responda y sucedan timeouts suficientes como para descartar el hop sea que se están siguiendo caminos alternativos que no pasan por él, sino por otro nodo que ignora los paquetes ECHO\_REQUEST. 
 
-También observamos la ocurrencia de comportamientos anómalos. Por ejemplo, en el camino a Rusia podemos ver que los hops 12 y 13 corresponden a la misma IP. Esto puede deberse a que se atraviesa una ruta MPLS que delega en ese host la tarea de enviar los mensajes TIME_EXCEEDED, o a que se toman caminos alternativos  que terminan en ese mismo host para ambos TTLs. Dado que los RTT son muy similares para ambos hops, creemos que la primera explicación es mucho más probable.
+También observamos la ocurrencia de comportamientos anómalos. Por ejemplo, en el camino a Rusia podemos ver que los hops 12 y 13 corresponden a la misma IP. Esto puede deberse a que se atraviesa una ruta MPLS que delega en ese host la tarea de enviar los mensajes TIME\_EXCEEDED, o a que se toman caminos alternativos  que terminan en ese mismo host para ambos TTLs. Dado que los RTT son muy similares para ambos hops, creemos que la primera explicación es mucho más probable.
 
 http://www.net.in.tum.de/fileadmin/TUM/NET/NET-2012-08-1/
 NET-2012-08-1\_02.pdf. 
