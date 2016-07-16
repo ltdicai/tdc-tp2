@@ -163,10 +163,11 @@ En las siguientes tablas mostramos los resultados obtenidos para distintos tama�
 
 \section{Análisis de los resultados}
 
+Si bien todos los tamaños de ráfagas devuelven caminos con igual cantidad de hops, a veces algunos host no llegan a responder. Por ejemplo, el host con IP 4.68.72.66 (hop 11 tanto del camino a EEUU como a Rusia) no parece detectarse a menos que la ráfaga sea grande. Suponemos que el umbral de timeout que utilizamos puede ser demasiado bajo, o que este . 
+
 Como podemos observar en los gráficos de RTT, aumentar el tamaño de la ráfaga no parece haber afectado la generación del camino. Si notamos que existen nodos que 
 
 
-El tamaño de las rafagas influye en los timeouts. Tal vez deberiamos probar con un umbral mas alto.
 
 Mas tamaño de rafaga tambien es mas riesgoso, porque hay mas chances de que varios paquetes sigan caminos distintos, haya mas varianza y el prefiltrado no funcione.
 
