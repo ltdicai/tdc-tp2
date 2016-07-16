@@ -1,0 +1,17 @@
+\BOOKMARK [1][-]{section.1}{Introducci\363n}{}% 1
+\BOOKMARK [1][-]{section.2}{Marco te\363rico}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Protocolo de Mensajes de Control de Internet- ICMP}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Traceroute}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Round Trip Time}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{Herramientas}{}% 6
+\BOOKMARK [2][-]{subsection.3.1}{Traceroute: idea}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.2}{Detecci\363n autom\341tica de enlaces de enlaces intercontinentales}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.3}{Implementacion}{section.3}% 9
+\BOOKMARK [1][-]{section.4}{Experimentos}{}% 10
+\BOOKMARK [1][-]{section.5}{Resultados}{}% 11
+\BOOKMARK [2][-]{subsection.5.1}{Experimento 1: Africa}{section.5}% 12
+\BOOKMARK [2][-]{subsection.5.2}{Experimento 2: EEUU}{section.5}% 13
+\BOOKMARK [2][-]{subsection.5.3}{Experimento 3: Japon}{section.5}% 14
+\BOOKMARK [2][-]{subsection.5.4}{Experimento 4: Rusia}{section.5}% 15
+\BOOKMARK [1][-]{section.6}{An\341lisis de los resultados}{}% 16
+\BOOKMARK [1][-]{section.7}{Conclusiones}{}% 17

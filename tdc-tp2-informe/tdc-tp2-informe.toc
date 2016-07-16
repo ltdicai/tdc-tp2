@@ -1,0 +1,18 @@
+\select@language {spanish}
+\contentsline {section}{\numberline {1}Introducci\IeC {\'o}n}{3}{section.1}
+\contentsline {section}{\numberline {2}Marco te\IeC {\'o}rico}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}Protocolo de Mensajes de Control de Internet- ICMP}{3}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Traceroute}{3}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Round Trip Time}{4}{subsection.2.3}
+\contentsline {section}{\numberline {3}Herramientas}{5}{section.3}
+\contentsline {subsection}{\numberline {3.1}Traceroute: idea}{5}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Detecci\IeC {\'o}n autom\IeC {\'a}tica de enlaces de enlaces intercontinentales}{5}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Implementacion}{6}{subsection.3.3}
+\contentsline {section}{\numberline {4}Experimentos}{6}{section.4}
+\contentsline {section}{\numberline {5}Resultados}{7}{section.5}
+\contentsline {subsection}{\numberline {5.1}Experimento 1: Africa}{8}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Experimento 2: EEUU}{11}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Experimento 3: Japon}{14}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Experimento 4: Rusia}{17}{subsection.5.4}
+\contentsline {section}{\numberline {6}An\IeC {\'a}lisis de los resultados}{20}{section.6}
+\contentsline {section}{\numberline {7}Conclusiones}{20}{section.7}
