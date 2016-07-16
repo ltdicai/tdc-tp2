@@ -169,8 +169,6 @@ Si bien todos los tamaños de ráfagas devuelven caminos con igual cantidad de h
 
 También observamos la ocurrencia de comportamientos anómalos. Por ejemplo, en el camino a Rusia podemos ver que los hops 12 y 13 corresponden a la misma IP. Esto puede deberse a que se atraviesa una ruta MPLS que delega en ese host la tarea de enviar los mensajes TIME\_EXCEEDED, o a que se toman caminos alternativos  que terminan en ese mismo host para ambos TTLs. Dado que los RTT son muy similares para ambos hops, creemos que la primera explicación es mucho más probable.
 
-http://www.net.in.tum.de/fileadmin/TUM/NET/NET-2012-08-1/
-NET-2012-08-1\_02.pdf. 
 
 \subsection{Detección automática de enlaces intercontinentales}
 
@@ -196,6 +194,19 @@ Por último, notamos que si bien existen enlaces intercontinentales que rondan l
 	Incluso usando una implementación de traceroute que mantenaga un único camino, problemas como congestión pueden el alterar las mediciones obtenidas.
 	Una posible mejora al algoritmo de detección automática de enlaces intercontinentales sería considerar no solo los RTT entre saltos, sino también las IP de donde provienen las respuestas; es decir, considerar solamente los saltos entre redes. Con esta información podríamos descartar aquellos falsos positivos que se encuentren dentro de una misma red. 
 	
-	Consideramos que el algoritmo tal como fue presentado no devuelve información confiable. Suponemos que si los datos obtenidos por tracetoute fueran más estables, el método podria ser más efectivo.
+	Consideramos que el algoritmo tal como fue presentado no devuelve información confiable. Suponemos que si los datos obtenidos por tracetoute fueran más estables, el método podria ser más efectivo. Además, sería necesario hacer más pruebas para determinar como unfluye el tamaño de las ráfaga en los resultados: valores muy pequeños no brindan suficientes datos como para obtener un promedio fiable, mientras que valores muy altos dan lugar a que varios paquetes sigan caminos distintos, haya mas varianza y el prefiltrado no funcione.
 
-Más tamaño de ráfaga tambien es mas riesgoso, porque hay mas chances de que varios paquetes sigan caminos distintos, haya mas varianza y el prefiltrado no funcione.
+\section{Referencias}
+[1]  RFC 792 (ICMP)
+http://www.ietf.org/rfc/rfc792.txt
+[2]  Traceroute (Wikipedia)
+http://en.wikipedia.org/wiki/Traceroute
+[3]
+http://www.geoiptool.com/es/
+[4]
+http://www.plotip.com/
+[5]
+http://www.mne.psu.edu/cimbala/me345/Lectures/Outliers.pdf
+[6]
+http://www.net.in.tum.de/fileadmin/TUM/NET/NET-2012-08-1/
+NET-2012-08-1_02.pdf
