@@ -25,7 +25,7 @@ Resulta importante  considerar la posibilidad de que algunos hops no tengan defi
 
 \subsection{Implementacion}
 
-La herramienta fue desarrollada en python utilizando el paquete scapy, y permite definir los siguientes parametros de ejecución:
+La herramienta fue desarrollada en Python utilizando el paquete \texttt{scapy}, y permite definir los siguientes parametros de ejecución:
 \begin{itemize}
 	\item{MAT\_RAFAGA: tamaño de la ráfaga para cada TTL}
 	\item{MAX\_TTL: cantidad máxima de saltos esperados}
@@ -41,11 +41,11 @@ El código se divide en tres funciones principales
 	\item{detectar\_enlaces\_intercontinentales: dato un camino devuelto por 'generar\_camino', calcula los RTT entre hops y marca aquellos que pueden ser saltos intercontinentales mediante la detección de outlier según el algoritmo de Cimbala.}
 \end{itemize}	
 
-Para el mapeo de IP a Pais utilizamos una base de datos obtenida de www.maxmind.com actualizada al 09/07/2016, accedida en el código por medio del paquete geoip2 de python. Descartamos otras fuentes de datos que debido a que presentaban limitaciones de performance, no proveían una API o se encontraban desactualizadas. 
+Para el mapeo de IP a Pais utilizamos una base de datos obtenida de \href{http://www.maxmind.com}{MaxMind} actualizada al 09/07/2016, accedida en el código por medio del paquete \texttt{geoip2} de Python. Descartamos otras fuentes de datos que debido a que presentaban limitaciones de performance, no proveían una API o se encontraban desactualizadas. 
 
 
 \section{Experimentos}
-A fin de probar el comportamiento del algoritmo propuesto, recolectamos los resultados de ejecutar el programa tomando como destinos a cuatro universidades en distintos continentes. Realizamos 3 corridas para cada destino, variando el tamaño de la rafaga en 50, 150 y 300.
+A fin de probar el comportamiento del algoritmo propuesto, recolectamos los resultados de ejecutar el programa tomando como destinos a cuatro universidades en distintos continentes. Realizamos 3 corridas para cada destino, variando el tamaño de la ráfaga en 50, 150 y 300 paquetes.
 Las destinos elegidos fueron:
 
 \begin{center}
@@ -68,43 +68,43 @@ Las destinos elegidos fueron:
 \end{figure}
 
 
-Los experimentos se realizaron utilizando en una computadora con Linux Mint conectada a internet (provisto por Fibertel) por medio de un enlace WiFi. Se utilizaron los siguientes comandos (donde n es el tamaño de la ráfaga) 
+Los experimentos se realizaron utilizando en una computadora con Linux Mint conectada a Internet (provisto por Fibertel) por medio de un enlace WiFi. Se utilizaron los siguientes comandos (donde $n$ es el tamaño de la ráfaga) 
 \begin{table}[]
 \centering
 \caption{Saltos y sus RTT en el camino desde Buenos Aires a la Universidad de Sudáfrica (África).}
 %\label{Universidad}
-\begin{tabular}{ | c | c | c | c | }
+\begin{tabular}{ | c | c | l | l | }
 	\hline 
-Experimento & Pais detino& Comando\\ \hline
- 1 & Sudáfrica & sudo python traceroute.py www.unisa.ac.za -tr n -p 0.3 -m 30 -o AFR\_n \\ 
-  2 & EEUU& sudo python traceroute.py www.cs.uoregon.edu -tr n -p 0.3 -m 30 -o EEUU\_n \\ 
-  3 & Japon& sudo python traceroute.py www.u-tokyo.ac.jp -tr n -p 0.3 -m 30 -o JAP\_n \\ 
-  4 & Rusia & sudo python traceroute.py msu.ru -tr n -p 0.3 -m 30 -o RUSIA\_n \\ 
+Exp & Destino & Comando\\ \hline
+ 1 & Sudáfrica & \texttt{sudo python traceroute.py www.unisa.ac.za -tr n -p 0.3 -m 30 -o AFR\_n} \\ 
+  2 & EEUU& \texttt{sudo python traceroute.py www.cs.uoregon.edu -tr n -p 0.3 -m 30 -o EEUU\_n} \\ 
+  3 & Japon& \texttt{sudo python traceroute.py www.u-tokyo.ac.jp -tr n -p 0.3 -m 30 -o JAP\_n} \\ 
+  4 & Rusia & \texttt{sudo python traceroute.py msu.ru -tr n -p 0.3 -m 30 -o RUSIA\_n} \\ 
   \hline
 
 \end{tabular}
 \end{table}
-  Notar que la herramienta debe ejecutarse con permisos de root.
+  Notar que la herramienta debe ejecutarse con permisos de \texttt{root}.
   
 
 En las siguientes tablas mostramos los resultados obtenidos para distintos tamaños de ráfagas. Notar que solo estamos utilizando el RTT promedio previamente con outliers eliminados.
 
 
-\subsection{Experimento 1: Africa}
+\subsection{Experimento 1: África}
 \input{tablas/tabla_camino_africa}
 \begin{landscape}
 \input{tablas/tabla_saltos_africa}
 \end{landscape}
 
 
-\subsection{Experimento 2: EEUU}
+\subsection{Experimento 2: Estados Unidos}
 \input{tablas/tabla_camino_eeuu}
 \begin{landscape}
 \input{tablas/tabla_saltos_eeuu}
 \end{landscape}
 
 
-\subsection{Experimento 3: Japon}
+\subsection{Experimento 3: Japón}
 \input{tablas/tabla_camino_japon}
 \begin{landscape}
 \input{tablas/tabla_saltos_japon}
@@ -122,7 +122,7 @@ En las siguientes tablas mostramos los resultados obtenidos para distintos tama�
 	
 \section{Análisis de resultados}
 
-\section{Experimento 1: Africa}
+\section{Experimento 1: África}
 \begin{figure}[H]
   \centering
   %\includegraphics[scale = 0.8]{imagenes/africaTTL.png}
